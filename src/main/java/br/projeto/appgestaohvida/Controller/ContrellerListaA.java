@@ -2,13 +2,12 @@ package br.projeto.appgestaohvida.Controller;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/listas/A")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
+
 public class ContrellerListaA {
     private int valor = 0;
     private ListasPacientes<Paciente> listaPacientesA = new ListasPacientes<>(); // Instância da lista de pacientes
@@ -18,7 +17,7 @@ public class ContrellerListaA {
         if (listaPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesA.getPrimeiro();
             listaPacientesA.excluirPrimeiro();
-            return primeiroPaciente.getSenha();
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
         } else {
             return "Nenhuma senha disponível";
         }
