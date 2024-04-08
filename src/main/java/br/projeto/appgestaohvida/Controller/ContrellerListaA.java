@@ -19,7 +19,7 @@ public class ContrellerListaA {
             listaPacientesA.excluirPrimeiro();
             return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
         } else {
-            return "Nenhuma senha disponível";
+            return "{\"senha\":\"Sem atendimento\"}";
         }
     }
 

@@ -17,9 +17,9 @@ public class ControllerListaP {
         if (listaPacientesP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesP.getPrimeiro();
             listaPacientesP.excluirPrimeiro();
-            return primeiroPaciente.getSenha();
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
         } else {
-            return "Nenhuma senha disponível";
+            return "{\"senha\":\"Sem atendimento\"}";
         }
     }
 
