@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/listas/main")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 public class controllerMain {
     @Autowired
     ControllerListaPP controllerListaPP;
@@ -26,7 +26,12 @@ public class controllerMain {
        else if (controllerListaPP.temListaPP()) {
             return controllerListaPP.obterPrimeiraSenha();
         } else if (controllerListaP.temListaP()) {
-            return controllerListaP.obterPrimeiraSenha();
+
+             String resposta = controllerListaP.obterPrimeiraSenha();
+             controllerListaP.retirarLista();
+
+            return resposta;
+
         }else{
             return controllerListaB.obterPrimeiraSenha();
         }

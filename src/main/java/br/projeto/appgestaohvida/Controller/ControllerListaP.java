@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/listas/P")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 public class ControllerListaP {
     private int valor = 0;
@@ -16,7 +16,6 @@ public class ControllerListaP {
     public String obterPrimeiraSenha() {
         if (listaPacientesP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesP.getPrimeiro();
-            listaPacientesP.excluirPrimeiro();
             return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
         } else {
             return "{\"senha\":\"Sem atendimento\"}";
@@ -31,6 +30,12 @@ public class ControllerListaP {
         valor++; //
 
         return "Paciente cadastrado com senha: " + novaSenha;
+    }
+
+    @DeleteMapping
+    public String retirarLista(){
+        listaPacientesP.excluirPrimeiro();
+        return "Paciente removido com sucesso!";
     }
     public boolean temListaP() {
         return (listaPacientesP.getTamanho() > 0);

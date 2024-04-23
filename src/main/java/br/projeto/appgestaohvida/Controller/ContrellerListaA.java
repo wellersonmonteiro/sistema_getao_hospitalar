@@ -2,15 +2,17 @@ package br.projeto.appgestaohvida.Controller;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/listas/A")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 public class ContrellerListaA {
     private int valor = 0;
-    private ListasPacientes<Paciente> listaPacientesA = new ListasPacientes<>(); // Instância da lista de pacientes
+    @Autowired
+    private ListasPacientes<Paciente> listaPacientesA; // Instância da lista de pacientes
 
     @GetMapping
     public String obterPrimeiraSenha() {

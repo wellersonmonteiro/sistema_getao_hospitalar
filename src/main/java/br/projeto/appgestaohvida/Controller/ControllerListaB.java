@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/listas/B")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true") //Colocar o endereço do servidor front end
 
 public class ControllerListaB {
     private int valor = 0;
