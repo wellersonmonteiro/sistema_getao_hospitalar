@@ -1,4 +1,4 @@
-package br.projeto.appgestaohvida.Controller;
+package br.projeto.appgestaohvida.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/listas/main")
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
-public class controllerMain {
+public class ControllerMain {
     @Autowired
     ControllerListaPP controllerListaPP;
     @Autowired

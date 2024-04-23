@@ -1,4 +1,4 @@
-package br.projeto.appgestaohvida.Controller;
+package br.projeto.appgestaohvida.controller;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
