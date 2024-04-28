@@ -17,14 +17,21 @@ public class ControllerMain {
     @Autowired
     ControllerListaB controllerListaB;
     @Autowired
-    ContrellerListaA contrellerListaA;
+    ContrellerListaA controllerListaA;
     @GetMapping
     public String main() {
-        if (contrellerListaA.temListaA()){
-            return contrellerListaA.obterPrimeiraSenha();
+        if (controllerListaA.temListaA()){
+            String resposta = controllerListaA.obterPrimeiraSenha();
+            controllerListaA.retirarLista();
+
+            return resposta;
         }
        else if (controllerListaPP.temListaPP()) {
-            return controllerListaPP.obterPrimeiraSenha();
+            String resposta = controllerListaPP.obterPrimeiraSenha();
+            controllerListaPP.retirarLista();
+
+            return resposta;
+
         } else if (controllerListaP.temListaP()) {
 
              String resposta = controllerListaP.obterPrimeiraSenha();
@@ -33,7 +40,10 @@ public class ControllerMain {
             return resposta;
 
         }else{
-            return controllerListaB.obterPrimeiraSenha();
+            String resposta = controllerListaB.obterPrimeiraSenha();
+            controllerListaB.retirarLista();
+
+            return resposta;
         }
     }
 }
