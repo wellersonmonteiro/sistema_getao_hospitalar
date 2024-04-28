@@ -24,8 +24,6 @@ public class Paciente<TIPO> {
 
     @Override
     public String toString() {
-        return
-                  ""+senha+""
-                ;
+        return ""+senha+"";
     }
 }
