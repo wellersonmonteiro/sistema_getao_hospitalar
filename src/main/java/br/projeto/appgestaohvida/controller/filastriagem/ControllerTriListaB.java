@@ -5,18 +5,18 @@ import br.projeto.appgestaohvida.model.Paciente;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/listas/P")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
+@RequestMapping("/listatriagem/B")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true") //Colocar o endereço do servidor front end
 
-public class ControllerListaP {
+public class ControllerTriListaB {
     private int valor = 0;
-    private ListasPacientes<Paciente> listaPacientesP = new ListasPacientes<>(); // Instância da lista de pacientes
+    private ListasPacientes<Paciente> listaTriPacientesB = new ListasPacientes<>(); // Instância da lista de pacientes
 
     @GetMapping
     public String obterPrimeiraSenha() {
-        if (listaPacientesP.getTamanho() > 0) {
-            Paciente primeiroPaciente = listaPacientesP.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
+        if (listaTriPacientesB.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesB.getPrimeiro();
+            return   "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
         } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -24,9 +24,9 @@ public class ControllerListaP {
 
     @PostMapping
     public String cadastrarNovoPaciente() {
-        String novaSenha = "P" + (valor + 1);
+        String novaSenha = "B" + (valor + 1);
         Paciente novoPaciente = new Paciente(novaSenha); // Cria um novo paciente com a nova senha
-        listaPacientesP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        listaTriPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
         return "Paciente cadastrado com senha: " + novaSenha;
@@ -35,7 +35,7 @@ public class ControllerListaP {
     @DeleteMapping
     public String retirarLista(){
         if (temListaP()){
-            listaPacientesP.excluirPrimeiro();
+            listaTriPacientesB.excluirPrimeiro();
             return "Paciente removido com sucesso!";
         }
         else {
@@ -43,6 +43,6 @@ public class ControllerListaP {
         }
     }
     public boolean temListaP() {
-        return (listaPacientesP.getTamanho() > 0);
+        return (listaTriPacientesB.getTamanho() > 0);
     }
 }
