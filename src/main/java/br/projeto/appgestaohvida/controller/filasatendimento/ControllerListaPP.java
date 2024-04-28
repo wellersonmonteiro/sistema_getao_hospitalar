@@ -19,7 +19,6 @@ public class ControllerListaPP {
     public String obterPrimeiraSenha() {
         if (listaPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesPP.getPrimeiro();
-            listaPacientesPP.excluirPrimeiro();
             return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}"; // Retorna a senha do primeiro paciente
         } else {
 
@@ -36,6 +35,17 @@ public class ControllerListaPP {
 
         return "Paciente cadastrado com senha: " + novaSenha;
     }
+    @DeleteMapping
+    public String retirarLista(){
+        if (temListaPP()){
+        listaPacientesPP.excluirPrimeiro();
+        return "Paciente removido com sucesso!";
+        }
+        else {
+            return "{\"senha\":\"Sem atendimento\"}";
+        }
+    }
+
     public boolean temListaPP() {
         return (listaPacientesPP.getTamanho() > 0);
     }

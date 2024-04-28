@@ -34,8 +34,13 @@ public class ControllerListaP {
 
     @DeleteMapping
     public String retirarLista(){
-        listaPacientesP.excluirPrimeiro();
-        return "Paciente removido com sucesso!";
+        if (temListaP()){
+            listaPacientesP.excluirPrimeiro();
+            return "Paciente removido com sucesso!";
+        }
+        else {
+            return "{\"senha\":\"Sem atendimento\"}";
+        }
     }
     public boolean temListaP() {
         return (listaPacientesP.getTamanho() > 0);
