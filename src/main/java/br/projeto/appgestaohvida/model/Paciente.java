@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @Setter
 
+
 public class Paciente<TIPO> {
     LocalTime now = LocalTime.now();
 
@@ -25,5 +26,10 @@ public class Paciente<TIPO> {
     @Override
     public String toString() {
         return ""+senha+"";
+    }
+
+    public Paciente(String hora, String senha) {
+        this.hora = hora;
+        this.senha = senha;
     }
 }
