@@ -2,7 +2,10 @@ package br.projeto.appgestaohvida.controller.filastriagem;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
+import br.projeto.appgestaohvida.model.infra.Hora;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listatriagem/PP")
@@ -19,8 +22,8 @@ public class ControllerTriListaPP {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesPP.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}"; // Retorna a senha do primeiro paciente
-        } else {
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
+                    ":"+primeiroPaciente.getHora()+"}";        } else {
 
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -29,8 +32,8 @@ public class ControllerTriListaPP {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "PP" + (valor + 1); // Gera uma nova senha
-        Paciente novoPaciente = new Paciente(novaSenha); // Cria um novo paciente com a nova senha
-        listaTriPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        Hora horaAtual = ()-> LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);        listaTriPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; // Incrementa o valor para a próxima senha
 
         return "Paciente cadastrado com senha: " + novaSenha;

@@ -2,7 +2,10 @@ package br.projeto.appgestaohvida.controller.filastriagem;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
+import br.projeto.appgestaohvida.model.infra.Hora;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listatriagem/B")
@@ -16,8 +19,8 @@ public class ControllerTriListaB {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesB.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesB.getPrimeiro();
-            return   "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
-        } else {
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
+                    ":"+primeiroPaciente.getHora()+"}";        } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
@@ -25,8 +28,8 @@ public class ControllerTriListaB {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "B" + (valor + 1);
-        Paciente novoPaciente = new Paciente(novaSenha); // Cria um novo paciente com a nova senha
-        listaTriPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        Hora horaAtual = ()-> LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);        listaTriPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
         return "Paciente cadastrado com senha: " + novaSenha;

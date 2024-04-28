@@ -2,8 +2,11 @@ package br.projeto.appgestaohvida.controller.filasatendimento;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
+import br.projeto.appgestaohvida.model.infra.Hora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/A")
@@ -18,7 +21,8 @@ public class ContrellerListaA {
     public String obterPrimeiraSenha() {
         if (listaPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesA.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
+                    ":"+primeiroPaciente.getHora()+"}";
         } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -27,7 +31,8 @@ public class ContrellerListaA {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "A" + (valor + 1);
-        Paciente novoPaciente = new Paciente(novaSenha); // Cria um novo paciente com a nova senha
+        Hora horaAtual = ()-> LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha); // Cria um novo paciente com a nova senha
         listaPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
