@@ -1,4 +1,4 @@
-package br.projeto.appgestaohvida.controller;
+package br.projeto.appgestaohvida.controller.filasatendimento;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
