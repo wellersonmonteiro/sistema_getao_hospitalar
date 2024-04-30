@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/listas/A")
@@ -31,12 +32,13 @@ public class ContrellerListaA {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "A" + (valor + 1);
-        Hora horaAtual = ()-> LocalTime.now();
-        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha); // Cria um novo paciente com a nova senha
+        LocalTime horaAtual = LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
         listaPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
-
-        return "Paciente cadastrado com senha: " + novaSenha;
+        String horaAtualFormatada = horaAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        return "{\"senha\":\""+  novoPaciente.getSenha()+"\",\"hora\"" +
+                ":"+ horaAtualFormatada+"}";
     }
     @DeleteMapping
     public String retirarLista(){
