@@ -37,7 +37,7 @@ public class ControllerListaPP {
         listaPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; // Incrementa o valor para a próxima senha
 
-        return "Paciente cadastrado com senha: " + novaSenha;
+        return "{\"senha\":\""+novaSenha+"\"}";
     }
     @DeleteMapping
     public String retirarLista(){

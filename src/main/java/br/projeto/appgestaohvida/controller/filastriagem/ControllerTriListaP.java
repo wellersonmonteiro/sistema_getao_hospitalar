@@ -32,7 +32,7 @@ public class ControllerTriListaP {
         Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);        listaTriPacientesP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "Paciente cadastrado com senha: " + novaSenha;
+        return "{\"senha\":\""+novaSenha+"\"}";
     }
 
     @DeleteMapping

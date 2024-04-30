@@ -32,13 +32,12 @@ public class ControllerTriListaA {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "A" + (valor + 1);
-        LocalTime horaAtual = LocalTime.now();
-        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
+        Hora horaAtual = ()-> LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha); // Cria um novo paciente com a nova senha
         listaTriPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
-        String horaAtualFormatada = horaAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        return "{\"senha\":\""+  novoPaciente.getSenha()+"\",\"hora\"" +
-                ":"+ horaAtualFormatada+"}";
+
+        return  "{\"senha\":\""+novaSenha+"\"}";
     }
     @DeleteMapping
     public String retirarLista(){
