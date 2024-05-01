@@ -34,7 +34,7 @@ public class ControllerListaB {
         listaPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "{\"senha\":\""+novaSenha+"\"}";
+        return "{\"senha\":\""+novaSenha+"\"}" ;
     }
 
     @DeleteMapping
