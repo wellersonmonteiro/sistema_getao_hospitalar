@@ -1,0 +1,21 @@
+// Parâmetros teste de entrada do cliente
+{
+  "viaAerea": false,
+  "respiracaoIneficaz": false,
+  "choque": false,
+  "naoRespondeEstimulo": false,
+  "emConvulsao": false,
+  "dorSevera": false,
+  "grandeHemorragia": false,
+  "alteracaoConsciencia": false,
+  "temperaturaAlta": false,
+  "traumaCraniano": false,
+  "pequenaHemorragia": false,
+  "dorModerada": false,
+  "vomitoPersistente": false,
+  "temperaturaEntre38e39": false,
+  "idosoOuGravidaSintomatico": false,
+  "dorLeve": false,
+  "nauseas": true,
+  "temperaturaEntre37e38": true
+}
