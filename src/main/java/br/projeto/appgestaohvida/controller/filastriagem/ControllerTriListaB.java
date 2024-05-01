@@ -1,4 +1,4 @@
-package br.projeto.appgestaohvida.controller.filasatendimento;
+package br.projeto.appgestaohvida.controller.filastriagem;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
@@ -8,20 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalTime;
 
 @RestController
-@RequestMapping("/listas/B")
+@RequestMapping("/listatriagem/B")
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true") //Colocar o endereço do servidor front end
 
-public class ControllerListaB {
+public class ControllerTriListaB {
     private int valor = 0;
-    private ListasPacientes<Paciente> listaPacientesB = new ListasPacientes<>(); // Instância da lista de pacientes
+    private ListasPacientes<Paciente> listaTriPacientesB = new ListasPacientes<>(); // Instância da lista de pacientes
 
     @GetMapping
     public String obterPrimeiraSenha() {
-        if (listaPacientesB.getTamanho() > 0) {
-            Paciente primeiroPaciente = listaPacientesB.getPrimeiro();
+        if (listaTriPacientesB.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesB.getPrimeiro();
             return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";
-        } else {
+                    ":"+primeiroPaciente.getHora()+"}";        } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
@@ -29,9 +28,9 @@ public class ControllerListaB {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "B" + (valor + 1);
-        Hora horaAtual = ()-> LocalTime.now();
+        Hora horaAtual = LocalTime::now;
         Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
-        listaPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        listaTriPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
         return "{\"senha\":\""+novaSenha+"\"}";
@@ -40,7 +39,7 @@ public class ControllerListaB {
     @DeleteMapping
     public String retirarLista(){
         if (temListaP()){
-            listaPacientesB.excluirPrimeiro();
+            listaTriPacientesB.excluirPrimeiro();
             return "Paciente removido com sucesso!";
         }
         else {
@@ -48,6 +47,6 @@ public class ControllerListaB {
         }
     }
     public boolean temListaP() {
-        return (listaPacientesB.getTamanho() > 0);
+        return (listaTriPacientesB.getTamanho() > 0);
     }
 }

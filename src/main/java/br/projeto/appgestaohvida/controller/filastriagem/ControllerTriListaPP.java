@@ -1,4 +1,4 @@
-package br.projeto.appgestaohvida.controller.filasatendimento;
+package br.projeto.appgestaohvida.controller.filastriagem;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalTime;
 
 @RestController
-@RequestMapping("/listas/PP")
+@RequestMapping("/listatriagem/PP")
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 
-public class ControllerListaPP {
+public class ControllerTriListaPP {
 
     private int valor = 0;
-    private ListasPacientes<Paciente> listaPacientesPP = new ListasPacientes<>(); // Instância da lista de pacientes
+    private ListasPacientes<Paciente> listaTriPacientesPP = new ListasPacientes<>(); // Instância da lista de pacientes
 
 
     @GetMapping
     public String obterPrimeiraSenha() {
-        if (listaPacientesPP.getTamanho() > 0) {
-            Paciente primeiroPaciente = listaPacientesPP.getPrimeiro();
+        if (listaTriPacientesPP.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesPP.getPrimeiro();
             return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
                     ":"+primeiroPaciente.getHora()+"}";        } else {
 
@@ -33,8 +33,7 @@ public class ControllerListaPP {
     public String cadastrarNovoPaciente() {
         String novaSenha = "PP" + (valor + 1); // Gera uma nova senha
         Hora horaAtual = ()-> LocalTime.now();
-        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
-        listaPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);        listaTriPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; // Incrementa o valor para a próxima senha
 
         return "{\"senha\":\""+novaSenha+"\"}";
@@ -42,7 +41,7 @@ public class ControllerListaPP {
     @DeleteMapping
     public String retirarLista(){
         if (temListaPP()){
-        listaPacientesPP.excluirPrimeiro();
+        listaTriPacientesPP.excluirPrimeiro();
         return "Paciente removido com sucesso!";
         }
         else {
@@ -51,6 +50,6 @@ public class ControllerListaPP {
     }
 
     public boolean temListaPP() {
-        return (listaPacientesPP.getTamanho() > 0);
+        return (listaTriPacientesPP.getTamanho() > 0);
     }
 }

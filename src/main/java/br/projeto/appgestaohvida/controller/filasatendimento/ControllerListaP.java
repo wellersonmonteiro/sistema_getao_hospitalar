@@ -2,7 +2,10 @@ package br.projeto.appgestaohvida.controller.filasatendimento;
 
 import br.projeto.appgestaohvida.model.ListasPacientes;
 import br.projeto.appgestaohvida.model.Paciente;
+import br.projeto.appgestaohvida.model.infra.Hora;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/P")
@@ -16,7 +19,8 @@ public class ControllerListaP {
     public String obterPrimeiraSenha() {
         if (listaPacientesP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesP.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\"}";
+            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
+                    ":"+primeiroPaciente.getHora()+"}";
         } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -25,17 +29,23 @@ public class ControllerListaP {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "P" + (valor + 1);
-        Paciente novoPaciente = new Paciente(novaSenha); // Cria um novo paciente com a nova senha
+        Hora horaAtual = ()-> LocalTime.now();
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
         listaPacientesP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "Paciente cadastrado com senha: " + novaSenha;
+        return "{\"senha\":\""+novaSenha+"\"}";
     }
 
     @DeleteMapping
     public String retirarLista(){
-        listaPacientesP.excluirPrimeiro();
-        return "Paciente removido com sucesso!";
+        if (temListaP()){
+            listaPacientesP.excluirPrimeiro();
+            return "Paciente removido com sucesso!";
+        }
+        else {
+            return "{\"senha\":\"Sem atendimento\"}";
+        }
     }
     public boolean temListaP() {
         return (listaPacientesP.getTamanho() > 0);
