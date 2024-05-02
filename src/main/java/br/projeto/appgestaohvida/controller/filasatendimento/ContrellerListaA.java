@@ -15,7 +15,7 @@ import java.time.LocalTime;
 public class ContrellerListaA {
     private int valor = 0;
     @Autowired
-    private ListasPacientes<Paciente> listaPacientesA; // Instância da lista de pacientes
+    private ListasPacientes<Paciente> listaPacientesA = new ListasPacientes<>(); // Instância da lista de pacientes
 
     @GetMapping
     public String obterPrimeiraSenha() {
