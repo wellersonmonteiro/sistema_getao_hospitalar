@@ -50,4 +50,16 @@ public class ControllerListaP {
     public boolean temListaP() {
         return (listaPacientesP.getTamanho() > 0);
     }
+    public String obterFormatado(int indice){
+        if(listaPacientesP.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesP.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesP.getTamanho();
+    }
 }

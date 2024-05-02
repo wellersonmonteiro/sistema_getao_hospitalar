@@ -28,6 +28,8 @@ public class ContrellerListaA {
         }
     }
 
+
+
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "A" + (valor + 1);
@@ -51,5 +53,17 @@ public class ContrellerListaA {
 
     public boolean temListaA() {
         return (listaPacientesA.getTamanho() > 0);
+    }
+    public String obterFormatado(int indice){
+        if(listaPacientesA.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesA.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesA.getTamanho();
     }
 }
