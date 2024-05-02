@@ -10,12 +10,12 @@ import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/A")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:63342/", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 public class ContrellerListaA {
     private int valor = 0;
     @Autowired
-    private ListasPacientes<Paciente> listaPacientesA; // Instância da lista de pacientes
+    private ListasPacientes<Paciente> listaPacientesA = new ListasPacientes<>(); // Instância da lista de pacientes
 
     @GetMapping
     public String obterPrimeiraSenha() {
@@ -27,6 +27,8 @@ public class ContrellerListaA {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
+
+
 
     @PostMapping
     public String cadastrarNovoPaciente() {
@@ -51,5 +53,17 @@ public class ContrellerListaA {
 
     public boolean temListaA() {
         return (listaPacientesA.getTamanho() > 0);
+    }
+    public String obterFormatado(int indice){
+        if(listaPacientesA.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesA.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesA.getTamanho();
     }
 }

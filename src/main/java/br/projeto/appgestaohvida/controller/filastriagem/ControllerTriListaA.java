@@ -5,8 +5,10 @@ import br.projeto.appgestaohvida.model.Paciente;
 import br.projeto.appgestaohvida.model.infra.Hora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.time.format.DateTimeFormatter;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/listatriagem/A")
@@ -31,11 +33,11 @@ public class ControllerTriListaA {
     public String cadastrarNovoPaciente() {
         String novaSenha = "A" + (valor + 1);
         Hora horaAtual = ()-> LocalTime.now();
-        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha); // Cria um novo paciente com a nova senha
         listaTriPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "Paciente cadastrado com senha: " + novaSenha;
+        return  "{\"senha\":\""+novaSenha+"\"}";
     }
     @DeleteMapping
     public String retirarLista(){

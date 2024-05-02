@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/B")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:63342/", "https://example.com"}, allowCredentials = "true") //Colocar o endereço do servidor front end
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true") //Colocar o endereço do servidor front end
 
 public class ControllerListaB {
     private int valor = 0;
@@ -34,12 +34,12 @@ public class ControllerListaB {
         listaPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "{\"senha\":\""+novaSenha+"\"}";
+        return "{\"senha\":\""+novaSenha+"\"}" ;
     }
 
     @DeleteMapping
     public String retirarLista(){
-        if (temListaP()){
+        if (temListaB()){
             listaPacientesB.excluirPrimeiro();
             return "Paciente removido com sucesso!";
         }
@@ -47,7 +47,20 @@ public class ControllerListaB {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
-    public boolean temListaP() {
+    public boolean temListaB() {
         return (listaPacientesB.getTamanho() > 0);
+    }
+
+    public String obterFormatado(int indice){
+        if(listaPacientesB.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesB.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesB.getTamanho();
     }
 }

@@ -42,8 +42,8 @@ public class ControllerListaPP {
     @DeleteMapping
     public String retirarLista(){
         if (temListaPP()){
-            listaPacientesPP.excluirPrimeiro();
-            return "Paciente removido com sucesso!";
+        listaPacientesPP.excluirPrimeiro();
+        return "Paciente removido com sucesso!";
         }
         else {
             return "{\"senha\":\"Sem atendimento\"}";
@@ -52,5 +52,18 @@ public class ControllerListaPP {
 
     public boolean temListaPP() {
         return (listaPacientesPP.getTamanho() > 0);
+    }
+
+    public String obterFormatado(int indice){
+        if(listaPacientesPP.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesPP.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesPP.getTamanho();
     }
 }

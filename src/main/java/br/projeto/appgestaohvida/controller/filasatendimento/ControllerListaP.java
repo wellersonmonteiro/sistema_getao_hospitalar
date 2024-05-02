@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/P")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:63342/", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 public class ControllerListaP {
     private int valor = 0;
@@ -49,5 +49,17 @@ public class ControllerListaP {
     }
     public boolean temListaP() {
         return (listaPacientesP.getTamanho() > 0);
+    }
+    public String obterFormatado(int indice){
+        if(listaPacientesP.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaPacientesP.getElemento(indice);
+            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
+                    ":"+primeiroPaciente.getSenha();
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaPacientesP.getTamanho();
     }
 }
