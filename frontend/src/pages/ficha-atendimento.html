@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Senha de Atendimento | Recepção</title>
+    <title>Ficha de Atendimento | Recepção</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
         }
-
 
         .bi {
             vertical-align: -.125em;
@@ -116,17 +107,16 @@
                 <img src="../assets/logotipo-clinica-vitallis.png" alt="Logo da Clínica Vitallis" width="25%" class="me-4">
                 <span class="fs-4">Clínica Vitallis</span>
             </a>
-
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="../pages/painel-senhas-recepcao.html" class="nav-link active" aria-current="page">
+                    <a href="../pages/painel-senhas-recepcao.html" class="nav-link link-dark">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                         Painel de Senhas
                     </a>
                 </li>
                 <li>
-                    <a href="../pages/ficha-atendimento.html" class="nav-link link-dark">
+                    <a href="../pages/ficha-atendimento.html" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                         Ficha de Atendimento
                     </a>
@@ -164,81 +154,111 @@
             <div class="content">
                 <div class="row align-items-center">
                     <div class="col-md-8 d-flex align-items-center ps-3">
-                       <h1 class="display-4 fs-4 mb-0">Seja bem-vindo(a) à Clínica Vitallis</h1>
+                        <h1 class="display-4 fs-4 mb-0">Seja bem-vindo(a) à Clínica Vitallis</h1>
                     </div>
                     <div class="col-md-4 text-end">
                         <p id="horarioAtual" class="fw-regular mb-0 pe-3 fs-4"></p>
                     </div>
                 </div>
                 <div class="pt-5">
-                <h2 class="display-4 fs-3 fw-bolder pt-5">Painel de Senhas</h2>
+                <h2 class="display-4 fs-3 fw-bolder">Ficha de Atendimento</h2>
                 </div>
             </div>
 
 
-            <div class="bg-light p-4 rounded-3 mt-4">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="mb-5">
-                            <label for="displaySenha" class="form-label">Próximo Paciente:</label>
-                            <div id="displaySenha" class="form-control">- -</div>
+            <div class="bg-light ps-4 pe-4 rounded-3 mt-5 h-100">
+                <form>
+                    <!-- Primeira linha com um campo -->
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-5 offset">
+                            <div class="mb-3">
+                                <label for="campo1" class="form-label">Senha de Atendimento</label>
+                                <input type="text" class="form-control" id="campo1" name="campo1" readonly>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-6">
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-action" onclick="selecionarSenha('Senha1')">
-                                <a href="#" class="nav-link link-dark d-flex align-items-center">
-                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#hand"/></svg>
-                                    Anunciar Senha
-                                </a>
-                            </li>
-                            <li class="list-group-item list-group-item-action" onclick="selecionarSenha()">
-                                <a href="../pages/ficha-atendimento.html" class="nav-link link-dark d-flex align-items-center">
-                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file"/></svg>
-                                    Abrir Ficha de Atendimento
-                                </a>
-                            </li>
-                            <li class="list-group-item list-group-item-action" onclick="selecionarSenha('Senha3')">
-                                <a href="#" class="nav-link link-dark d-flex align-items-center">
-                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#next"/></svg>
-                                    Chamar Próximo
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- Segunda linha com dois campos -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="campo2" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="campo2" name="campo2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="campo3" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="campo3" name="campo3">
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Terceira linha com três campos -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="campo4" class="form-label">Data de Nascimento</label>
+                                <input type="text" class="form-control" id="campo4" name="campo4">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="campo5" class="form-label">Gênero</label>
+                                <input type="text" class="form-control" id="campo5" name="campo5">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="campo6" class="form-label">Tipo de Atendimento</label>
+                                <input type="text" class="form-control" id="campo6" name="campo6">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linhas seguintes com duas colunas -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="campo7" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="campo7" name="campo7">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="campo8" class="form-label">E-mail</label>
+                                <input type="text" class="form-control" id="campo8" name="campo8">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="campo9" class="form-label">Endereço (rua + nº)</label>
+                                <input type="text" class="form-control" id="campo9" name="campo9">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="mb-3">
+                                <label for="campo10" class="form-label">CEP</label>
+                                <input type="text" class="form-control" id="campo10" name="campo10">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-0">
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-dark w-25">Salvar</button>
+                        </div>
+
+                    </div>
+
+                </form>
             </div>
-
-            <div class="p-4 rounded-3 mt-4">
-                <table class="table table-striped" id="tabelaPacientes">
-                    <thead>
-                    <tr>
-                        <th scope="col">Número na fila</th>
-                        <th scope="col">Horário de Chegada</th>
-                        <th scope="col">Senha</th>
-                        <th scope="col">Tipo de Atendimento</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr>
-                        <td>1</td>
-                        <td>10:01</td>
-                        <td>AA150</td>
-                        <td>Prioritário</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>10:04</td>
-                        <td>AA155</td>
-                        <td>Geral</td>
-                    </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
         </div>
     </div>
 
@@ -253,7 +273,7 @@
 
 
 <script src="../components/sidebars.js"></script>
-<script src="../components/telaRecepcao.js"></script>
+<script src="../components/telaFichaAtendimento.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>

@@ -1,0 +1,27 @@
+.card {
+    background-color: #f0f0f0; /* Cor de fundo */
+    color: #333; /* Cor do texto */
+    margin: 15px; /* Margem ao redor do cartão */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15); /* Sombreamento */
+    height: 90%;
+    border: #e9ecef;
+}
+
+.card:hover {
+    background-color: rgba(240, 240, 240, 0.38); /* Cor de fundo */
+    color: #333; /* Cor do texto */
+    margin: 15px; /* Margem ao redor do cartão */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15); /* Sombreamento */
+    height: 90%;
+    border: #e9ecef;
+}
+.card-header {
+    background-color: #007bff; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto do cabeçalho */
+}
+
+.card-footer {
+    background-color: #e9ecef; /* Cor de fundo do rodapé */
+}

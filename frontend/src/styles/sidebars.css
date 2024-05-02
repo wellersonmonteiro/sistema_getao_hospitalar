@@ -57,3 +57,8 @@ main {
 .scrollarea {
   overflow-y: auto;
 }
+
+.nav-link.active {
+  background-color: rgba(0, 0, 0, .75) !important;
+  color: #d2f4ea;
+}

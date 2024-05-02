@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/listas/A")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:63342/", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 
 public class ContrellerListaA {
     private int valor = 0;
@@ -36,7 +36,7 @@ public class ContrellerListaA {
         listaPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "Paciente cadastrado com senha: " + novaSenha;
+        return  "{\"senha\":\""+novaSenha+"\"}";
     }
     @DeleteMapping
     public String retirarLista(){
