@@ -22,9 +22,9 @@ public class ControllerListaPP {
     public String obterPrimeiraSenha() {
         if (listaPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesPP.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";        } else {
-
+            return String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
+                    primeiroPaciente.getSenha(), primeiroPaciente.getHora());
+        } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
@@ -54,12 +54,12 @@ public class ControllerListaPP {
         return (listaPacientesPP.getTamanho() > 0);
     }
 
-    public String obterFormatado(int indice){
-        if(listaPacientesPP.getTamanho() > 0) {
+    public String obterFormatado(int indice) {
+        if (listaPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesPP.getElemento(indice);
-            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
-                    ":"+primeiroPaciente.getSenha();
-        }else{
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        } else {
             return "";
         }
     }

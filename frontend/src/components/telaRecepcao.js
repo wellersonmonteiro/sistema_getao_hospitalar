@@ -22,6 +22,7 @@ function atualizarHorario() {
 
 setInterval(atualizarHorario, 1000);
 
+
 function selecionarSenha() {
     const displaySenha = document.getElementById('displaySenha');
     const valorSenha = displaySenha.textContent.trim();
@@ -31,65 +32,79 @@ function selecionarSenha() {
     window.location.href = '../pages/ficha-atendimento.html';
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // URL do endpoint para obter a primeira senha por ordem de prioridade
-    const url = "http://localhost:8080/listas/main";
+// Função para buscar o conjunto de listas do endpoint `/listas/main/conjuntolistas`
+async function buscarConjuntoDeListas() {
+    // Define o endpoint da API
+    const endpoint = 'http://localhost:8080/listas/main/conjuntolistas';
 
-    // Faça uma solicitação HTTP ao endpoint usando fetch
-    fetch(url, {
-        method: "GET", // Ou "GET" conforme necessário
-        headers: {
-            "Content-Type": "application/json" // Se necessário para POST ou PUT
+    try {
+        // Faz a requisição GET para a API
+        const resposta = await fetch(endpoint);
+
+        // Verifica se a resposta é bem-sucedida
+        if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
         }
-    })
-        .then(response => response.json()) // Converte a resposta para JSON
-        .then(data => {
-            // `data` contém a resposta do servidor com a senha
-            const senha = data.senha;
 
-            // Encontre a `div` com o ID `displaySenha`
-            const displaySenha = document.getElementById('displaySenha');
+        // Converte a resposta para JSON
+        const dados = await resposta.json();
 
-            // Atualize o texto da `div` com a senha recebida
-            displaySenha.textContent = senha;
-        })
-        .catch(error => {
-            console.error("Erro ao obter a primeira senha:", error);
-        });
-});
+        // Exibe os dados recebidos para verificar
+        console.log('Conjunto de listas recebidas:', dados);
 
-function obterPrimeiraSenha() {
-    // URL da API
-    const url = 'http://localhost:8080/listas/main'; // Certifique-se de que a URL está correta
+        // Retorna os dados recebidos
+        return dados;
 
-    // Fazer a requisição GET
-    fetch(url)
-        .then(response => {
-            // Verificar se a resposta está ok
-            if (!response.ok) {
-                throw new Error('Erro na resposta da API');
-            }
-            // Converter a resposta para JSON
-            return response.json();
-        })
-        .then(data => {
-            // Adicione o log aqui para verificar os dados recebidos
-            console.log('Dados recebidos da API:', data);
-
-            // Atualizar o elemento HTML com a primeira senha
-            const displaySenha = document.getElementById('displaySenha');
-            if (data.senha) {
-                displaySenha.textContent = `Senha: ${data.senha}`;
-            } else {
-                displaySenha.textContent = 'Sem atendimento';
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao obter os dados:', error);
-            // Tratar erro, se necessário
-        });
+    } catch (erro) {
+        console.error('Erro ao buscar o conjunto de listas:', erro);
+        throw erro;
+    }
 }
 
-window.addEventListener('load', () => {
-    obterPrimeiraSenha();
-});
+async function exibirConjuntoDeListas() {
+    try {
+        // Busca o conjunto de listas
+        const conjuntoDeListas = await buscarConjuntoDeListas();
+
+        // Verifique os dados recebidos no console para depuração
+        console.log("Dados recebidos:", conjuntoDeListas);
+
+        // Seleciona o tbody da tabela de pacientes
+        const tabelaPacientes = document.querySelector("#pacientesTable tbody");
+
+        // Limpa a tabela antes de adicionar novas linhas
+        tabelaPacientes.innerHTML = "";
+
+        // Itera sobre o conjunto de listas para criar as linhas da tabela
+        conjuntoDeListas.forEach(item => {
+            // Cria uma nova linha da tabela
+            const novaLinha = document.createElement("tr");
+
+            // Cria células para "Número na Fila", "hora", "senha" e "Tipo de Atendimento"
+            const numeroNaFila = document.createElement("td");
+            numeroNaFila.textContent = item["Número na Fila"];
+            novaLinha.appendChild(numeroNaFila);
+
+            const hora = document.createElement("td");
+            hora.textContent = item["hora"];
+            novaLinha.appendChild(hora);
+
+            const senha = document.createElement("td");
+            senha.textContent = item["senha"];
+            novaLinha.appendChild(senha);
+
+            const tipoAtendimento = document.createElement("td");
+            tipoAtendimento.textContent = item["Tipo de atendimento"];
+            novaLinha.appendChild(tipoAtendimento);
+
+            // Adiciona a nova linha ao tbody da tabela
+            tabelaPacientes.appendChild(novaLinha);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao exibir o conjunto de listas:", erro);
+    }
+}
+
+// Chama a função para exibir o conjunto de listas ao carregar a página
+window.addEventListener("load", exibirConjuntoDeListas);
