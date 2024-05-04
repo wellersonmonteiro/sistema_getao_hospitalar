@@ -21,8 +21,8 @@ public class ContrellerListaA {
     public String obterPrimeiraSenha() {
         if (listaPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesA.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";
+            return String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
+                    primeiroPaciente.getSenha(), primeiroPaciente.getHora());
         } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -57,8 +57,8 @@ public class ContrellerListaA {
     public String obterFormatado(int indice){
         if(listaPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaPacientesA.getElemento(indice);
-            return "hora\":\"" +primeiroPaciente.getHora() +"\",\"senha\"" +
-                    ":"+primeiroPaciente.getSenha();
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
         }else{
             return "";
         }
