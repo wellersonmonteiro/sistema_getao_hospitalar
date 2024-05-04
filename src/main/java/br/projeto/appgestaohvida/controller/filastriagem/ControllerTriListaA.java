@@ -23,6 +23,7 @@ public class ControllerTriListaA {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesA.getPrimeiro();
+
             return String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
                     primeiroPaciente.getSenha(), primeiroPaciente.getHora());
         } else {
@@ -42,6 +43,14 @@ public class ControllerTriListaA {
 
         return  "{\"senha\":\""+novaSenha+"\"}";
     }
+
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaTriPacientesA.adicionar(String.valueOf(paciente));
+        return "{\"senha\":\""+paciente.getSenha()+"\"}";
+    }
+
+
+
     @DeleteMapping
     public String retirarLista(){
         if (temListaA()){
@@ -87,4 +96,5 @@ public class ControllerTriListaA {
     public int tamanhoList(){
         return listaTriPacientesA.getTamanho();
     }
+
 }

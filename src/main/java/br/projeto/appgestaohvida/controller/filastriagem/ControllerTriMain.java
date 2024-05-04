@@ -1,5 +1,8 @@
 package br.projeto.appgestaohvida.controller.filastriagem;
 
+import br.projeto.appgestaohvida.controller.filasatendimento.ContrellerListaA;
+import br.projeto.appgestaohvida.model.Paciente;
+import br.projeto.appgestaohvida.model.pacientes.PacienteTriagemDTO;
 import br.projeto.appgestaohvida.model.pacientes.SenhaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,9 @@ public class ControllerTriMain {
     ControllerTriListaB controllerTriListaB;
     @Autowired
     ControllerTriListaA controllerTriListaA;
+    @Autowired
+    private ContrellerListaA contrellerListaA;
+
     @GetMapping
     public String main() {
         if (controllerTriListaA.temListaA()){
@@ -116,5 +122,23 @@ public class ControllerTriMain {
            return  "feitoP";
        }
         return  "Não feito";
+    }
+
+    @PostMapping
+    public String inserirPaciente(@RequestBody PacienteTriagemDTO triagemDTO){
+      Paciente paciente = new Paciente(triagemDTO.getSenha(), triagemDTO.getNome_completo(),
+              triagemDTO.getCPF(), triagemDTO.getTelefone(), triagemDTO.getEmail(),triagemDTO.getRua(),
+              triagemDTO.getCep(), triagemDTO.getGenero(), triagemDTO.getNome_completo(), triagemDTO.getTipo_de_atendimento());
+        System.out.println(paciente.getSenha());
+        if ("Emergência".equals(triagemDTO.getTipo_de_atendimento())) {
+            controllerTriListaA.adicionarNovoPaciente(paciente);
+        } else if ("Prioritário I".equals(triagemDTO.getTipo_de_atendimento())) {
+            controllerTriListaPP.adicionarNovoPaciente(paciente);
+        } else if ("Prioritário II".equals(triagemDTO.getTipo_de_atendimento())) {
+            controllerTriListaP.adicionarNovoPaciente(paciente);
+        }else if ("Geral".equals(triagemDTO.getTipo_de_atendimento())) {
+            controllerTriListaB.adicionarNovoPaciente(paciente);
+        }
+        return "Criado";
     }
 }

@@ -85,4 +85,8 @@ public class ControllerTriListaPP {
             return false;
         }
     }
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaTriPacientesPP.adicionar(String.valueOf(paciente));
+        return "{\"senha\":\""+paciente.getSenha()+"\"}";
+    }
 }

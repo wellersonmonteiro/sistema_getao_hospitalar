@@ -16,15 +16,29 @@ public class Paciente<TIPO> {
 
     String senha;
     String hora = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-    String nome = null;
-    String cpf = null;
-    String telefone = null;
-    String email = null;
-    String rua = null;
-    String cep = null;
-    String genero = null;
-    String dataNascimento = null;
-    String tipoDeAtendimento = null;
+    String nome ;
+    String cpf;
+
+    public Paciente(String senha, String nomeCompleto, String cpf, String telefone, String email, String rua, String cep, String genero, String dataNascimento, String tipoDeAtendimento) {
+        this.senha = senha;
+        this.nome = nomeCompleto;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.rua = rua;
+        this.cep = cep;
+        this.genero = genero;
+        this.dataNascimento = dataNascimento;
+        this.tipoDeAtendimento = tipoDeAtendimento;
+    }
+
+    String telefone ;
+    String email ;
+    String rua ;
+    String cep;
+    String genero;
+    String dataNascimento;
+    String tipoDeAtendimento;
 
 
     private Paciente<TIPO> proximo;
