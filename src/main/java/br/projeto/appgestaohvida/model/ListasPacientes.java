@@ -78,7 +78,7 @@ public class ListasPacientes<TIPO> {
 
 
 
-    public void remover(TIPO valorProcurado){
+    public void remover(int valorProcurado){
             Paciente<TIPO> anterior = null;
             Paciente<TIPO> atual = this.primeiro;
             for(int i=0; i < this.getTamanho(); i++){
@@ -113,6 +113,34 @@ public class ListasPacientes<TIPO> {
             }
             return atual;
         }
+    public void removerPorIndice(int indice){
+        if (indice < 0 || indice >= this.getTamanho()) {
+            throw new IndexOutOfBoundsException("Índice fora dos limites da lista");
+        }
+
+        Paciente<TIPO> anterior = null;
+        Paciente<TIPO> atual = this.primeiro;
+
+        for (int i = 0; i < indice; i++) {
+            anterior = atual;
+            atual = atual.getProximo();
+        }
+
+        if (this.tamanho == 1) {
+            this.primeiro = null;
+            this.ultimo = null;
+        } else if (atual == primeiro) {
+            this.primeiro = atual.getProximo();
+        } else if (atual == ultimo) {
+            this.ultimo = anterior;
+            anterior.setProximo(null);
+        } else {
+            anterior.setProximo(atual.getProximo());
+        }
+
+        this.tamanho--;
+    }
+
 
 
 

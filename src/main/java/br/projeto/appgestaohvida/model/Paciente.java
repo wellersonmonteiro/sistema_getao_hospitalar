@@ -16,6 +16,17 @@ public class Paciente<TIPO> {
 
     String senha;
     String hora = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+    String nome = null;
+    String cpf = null;
+    String telefone = null;
+    String email = null;
+    String rua = null;
+    String cep = null;
+    String genero = null;
+    String dataNascimento = null;
+    String tipoDeAtendimento = null;
+
+
     private Paciente<TIPO> proximo;
 
     public Paciente(String senha) {

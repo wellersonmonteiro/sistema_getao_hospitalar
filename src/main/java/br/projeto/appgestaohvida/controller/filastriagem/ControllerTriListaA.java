@@ -23,11 +23,14 @@ public class ControllerTriListaA {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesA.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesA.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";        } else {
+            return String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
+                    primeiroPaciente.getSenha(), primeiroPaciente.getHora());
+        } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
+
+
 
     @PostMapping
     public String cadastrarNovoPaciente() {
@@ -49,8 +52,39 @@ public class ControllerTriListaA {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
+    @DeleteMapping("/tirarFila")
+    public boolean retirarFila(String senha) {
+        int indexToRemove = -1; // Inicializa como -1 para indicar que nenhum elemento correspondente foi encontrado
+        for (int i = 0; i < listaTriPacientesA.getTamanho(); i++) {
+            String senhaComparar = listaTriPacientesA.getElemento(i).getSenha();
+            if (senhaComparar.equals(senha)) {
+                indexToRemove = i; // Armazena a posição do elemento a ser removido
+                break; // Sai do loop assim que encontrar o elemento
+            }
+        }
+
+        if (indexToRemove != -1) { // Verifica se um elemento correspondente foi encontrado
+            listaTriPacientesA.removerPorIndice(indexToRemove); // Remove o elemento da lista
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public boolean temListaA() {
         return (listaTriPacientesA.getTamanho() > 0);
+    }
+    public String obterFormatado(int indice){
+        if(listaTriPacientesA.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesA.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaTriPacientesA.getTamanho();
     }
 }

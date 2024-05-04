@@ -19,8 +19,9 @@ public class ControllerTriListaB {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesB.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesB.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";        } else {
+            return   String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
+                    primeiroPaciente.getSenha(), primeiroPaciente.getHora());
+        } else {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
@@ -28,17 +29,17 @@ public class ControllerTriListaB {
     @PostMapping
     public String cadastrarNovoPaciente() {
         String novaSenha = "B" + (valor + 1);
-        Hora horaAtual = LocalTime::now;
+        Hora horaAtual = ()-> LocalTime.now();
         Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
         listaTriPacientesB.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; //
 
-        return "{\"senha\":\""+novaSenha+"\"}";
+        return "{\"senha\":\""+novaSenha+"\"}" ;
     }
 
     @DeleteMapping
     public String retirarLista(){
-        if (temListaP()){
+        if (temListaB()){
             listaTriPacientesB.excluirPrimeiro();
             return "Paciente removido com sucesso!";
         }
@@ -46,7 +47,38 @@ public class ControllerTriListaB {
             return "{\"senha\":\"Sem atendimento\"}";
         }
     }
-    public boolean temListaP() {
+    public boolean temListaB() {
         return (listaTriPacientesB.getTamanho() > 0);
+    }
+
+    public String obterFormatado(int indice){
+        if(listaTriPacientesB.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesB.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaTriPacientesB.getTamanho();
+    }
+    @DeleteMapping("/tirarFila")
+    public boolean retirarFila(String senha) {
+        int indexToRemove = -1; // Inicializa como -1 para indicar que nenhum elemento correspondente foi encontrado
+        for (int i = 0; i < listaTriPacientesB.getTamanho(); i++) {
+            String senhaComparar = listaTriPacientesB.getElemento(i).getSenha();
+            if (senhaComparar.equals(senha)) {
+                indexToRemove = i; // Armazena a posição do elemento a ser removido
+                break; // Sai do loop assim que encontrar o elemento
+            }
+        }
+
+        if (indexToRemove != -1) { // Verifica se um elemento correspondente foi encontrado
+            listaTriPacientesB.removerPorIndice(indexToRemove); // Remove o elemento da lista
+            return true;
+        } else {
+            return false;
+        }
     }
 }
