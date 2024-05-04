@@ -89,6 +89,4 @@ public class ControllerConsMain {
         return "Paciente adicionado com sucesso a fila " + corFila;
     }
 
-
-
 }

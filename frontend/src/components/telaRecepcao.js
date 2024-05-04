@@ -8,13 +8,10 @@ function formatarHorario(date) {
 }
 
 function atualizarHorario() {
-    // Obtenha o elemento HTML onde o horário será exibido
     const elementoHorario = document.getElementById('horarioAtual');
 
-    // Obtenha a data e hora atuais
     const now = new Date();
 
-    // Formate o horário
     const horarioFormatado = formatarHorario(now);
 
     elementoHorario.textContent = horarioFormatado;
@@ -32,27 +29,20 @@ function selecionarSenha() {
     window.location.href = '../pages/ficha-atendimento.html';
 }
 
-// Função para buscar o conjunto de listas do endpoint `/listas/main/conjuntolistas`
 async function buscarConjuntoDeListas() {
-    // Define o endpoint da API
     const endpoint = 'http://localhost:8080/listas/main/conjuntolistas';
 
     try {
-        // Faz a requisição GET para a API
         const resposta = await fetch(endpoint);
 
-        // Verifica se a resposta é bem-sucedida
         if (!resposta.ok) {
             throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
         }
 
-        // Converte a resposta para JSON
         const dados = await resposta.json();
 
-        // Exibe os dados recebidos para verificar
         console.log('Conjunto de listas recebidas:', dados);
 
-        // Retorna os dados recebidos
         return dados;
 
     } catch (erro) {
@@ -63,24 +53,14 @@ async function buscarConjuntoDeListas() {
 
 async function exibirConjuntoDeListas() {
     try {
-        // Busca o conjunto de listas
         const conjuntoDeListas = await buscarConjuntoDeListas();
-
-        // Verifique os dados recebidos no console para depuração
         console.log("Dados recebidos:", conjuntoDeListas);
 
-        // Seleciona o tbody da tabela de pacientes
         const tabelaPacientes = document.querySelector("#pacientesTable tbody");
-
-        // Limpa a tabela antes de adicionar novas linhas
         tabelaPacientes.innerHTML = "";
 
-        // Itera sobre o conjunto de listas para criar as linhas da tabela
         conjuntoDeListas.forEach(item => {
-            // Cria uma nova linha da tabela
             const novaLinha = document.createElement("tr");
-
-            // Cria células para "Número na Fila", "hora", "senha" e "Tipo de Atendimento"
             const numeroNaFila = document.createElement("td");
             numeroNaFila.textContent = item["Número na Fila"];
             novaLinha.appendChild(numeroNaFila);
@@ -96,8 +76,6 @@ async function exibirConjuntoDeListas() {
             const tipoAtendimento = document.createElement("td");
             tipoAtendimento.textContent = item["Tipo de atendimento"];
             novaLinha.appendChild(tipoAtendimento);
-
-            // Adiciona a nova linha ao tbody da tabela
             tabelaPacientes.appendChild(novaLinha);
         });
 
@@ -105,6 +83,41 @@ async function exibirConjuntoDeListas() {
         console.error("Erro ao exibir o conjunto de listas:", erro);
     }
 }
-
-// Chama a função para exibir o conjunto de listas ao carregar a página
 window.addEventListener("load", exibirConjuntoDeListas);
+
+async function exibirPrimeiraSenha(event) {
+    if (event) {
+        event.preventDefault();
+    }
+    try {
+        const resposta = await fetch('http://localhost:8080/listas/main');
+
+        if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
+        }
+
+        const dados = await resposta.json();
+
+        if (dados.senha) {
+            const displaySenha = document.getElementById('displaySenha');
+            displaySenha.textContent = `${dados.senha}`;
+
+            const removerResposta = await fetch('http://localhost:8080/listas/A', {
+                method: 'DELETE'
+            });
+
+            if (!removerResposta.ok) {
+                throw new Error(`Erro ao remover o primeiro paciente: ${removerResposta.status} - ${removerResposta.statusText}`);
+            }
+
+            await exibirConjuntoDeListas();
+        } else {
+            console.log("Sem senha disponível na fila.");
+        }
+
+    } catch (erro) {
+        console.error('Erro ao exibir a primeira senha:', erro);
+    }
+}
+
+document.querySelector('.list-group-item-action').addEventListener('click', exibirPrimeiraSenha);
