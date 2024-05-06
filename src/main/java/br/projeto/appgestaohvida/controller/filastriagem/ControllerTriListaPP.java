@@ -59,7 +59,7 @@ public class ControllerTriListaPP {
         if(listaTriPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesPP.getElemento(indice);
             return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
-                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+                   primeiroPaciente.getHora(), primeiroPaciente.getSenha());
         }else{
             return "";
         }
@@ -86,7 +86,14 @@ public class ControllerTriListaPP {
         }
     }
     public String adicionarNovoPaciente(Paciente paciente) {
-        listaTriPacientesPP.adicionar(String.valueOf(paciente));
-        return "{\"senha\":\""+paciente.getSenha()+"\"}";
+        listaTriPacientesPP.adicionarGererico(paciente);
+        return "{\"senha\":\"" + paciente.getSenha() + "\"}";
     }
+    public String obterFormatadoNome(int indice){
+
+            Paciente primeiroPaciente = listaTriPacientesPP.getElemento(indice);
+            return String.format("\"nome\":\"%s\"",
+                   primeiroPaciente.getNome() );
+    }
+
 }

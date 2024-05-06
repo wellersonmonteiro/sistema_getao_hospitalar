@@ -1,6 +1,7 @@
 package br.projeto.appgestaohvida.controller.filastriagem;
 
 import br.projeto.appgestaohvida.controller.filasatendimento.ContrellerListaA;
+import br.projeto.appgestaohvida.controller.filasatendimento.ControllerListaP;
 import br.projeto.appgestaohvida.model.Paciente;
 import br.projeto.appgestaohvida.model.pacientes.PacienteTriagemDTO;
 import br.projeto.appgestaohvida.model.pacientes.SenhaDTO;
@@ -24,6 +25,8 @@ public class ControllerTriMain {
     ControllerTriListaA controllerTriListaA;
     @Autowired
     private ContrellerListaA contrellerListaA;
+    @Autowired
+    private ControllerListaP controllerListaP;
 
     @GetMapping
     public String main() {
@@ -65,8 +68,8 @@ public class ControllerTriMain {
         if (controllerTriListaA.temListaA()) {
             int tamanhoA = Math.min(controllerTriListaA.tamanhoList(), 10 - contadorDasListas);
             for (int i = 0; i < tamanhoA; i++) {
-                itens2.add(String.format("{\"Número na Fila\": %d, %s, \"Tipo de atendimento\": \"Emergência\"}",
-                        numeroDeListasPercorrer++, controllerTriListaA.obterFormatado(i)));
+                itens2.add(String.format("{\"Número na Fila\": %d, %s ,%s, \"Tipo de atendimento\": \"Emergência\"}",
+                        numeroDeListasPercorrer++,controllerTriListaA.obterFormatadoNome(i) ,controllerTriListaA.obterFormatado(i)));
             }
             contadorDasListas += tamanhoA;
         }
@@ -74,8 +77,8 @@ public class ControllerTriMain {
         if (contadorDasListas < 10 && controllerTriListaPP.temListaPP()) {
             int tamanhoPP = Math.min(controllerTriListaPP.tamanhoList(), 10 - contadorDasListas);
             for (int i = 0; i < tamanhoPP; i++) {
-                itens2.add(String.format("{\"Número na Fila\": %d, %s, \"Tipo de atendimento\": \"Prioritário I\"}",
-                        numeroDeListasPercorrer++, controllerTriListaPP.obterFormatado(i)));
+                itens2.add(String.format("{\"Número na Fila\": %d,%s ,%s, \"Tipo de atendimento\": \"Prioritário I\"}",
+                        numeroDeListasPercorrer++,controllerTriListaPP.obterFormatadoNome(i),controllerTriListaPP.obterFormatado(i)));
             }
             contadorDasListas += tamanhoPP;
         }
@@ -83,8 +86,8 @@ public class ControllerTriMain {
         if (contadorDasListas < 10 && controllerTriListaP.temListaP()) {
             int tamanhoP = Math.min(controllerTriListaP.tamanhoList(), 10 - contadorDasListas);
             for (int i = 0; i < tamanhoP; i++) {
-                itens2.add(String.format("{\"Número na Fila\": %d, %s, \"Tipo de atendimento\": \"Prioritário II\"}",
-                        numeroDeListasPercorrer++, controllerTriListaP.obterFormatado(i)));
+                itens2.add(String.format("{\"Número na Fila\": %d, %s, %s, \"Tipo de atendimento\": \"Prioritário II\"}",
+                        numeroDeListasPercorrer++,controllerTriListaP.obterFormatadoNome(i),controllerTriListaP.obterFormatado(i)));
             }
             contadorDasListas += tamanhoP;
         }
@@ -92,8 +95,8 @@ public class ControllerTriMain {
         if (contadorDasListas < 10 && controllerTriListaB.temListaB()) {
             int tamanhoB = Math.min(controllerTriListaB.tamanhoList(), 10 - contadorDasListas);
             for (int i = 0; i < tamanhoB; i++) {
-                itens2.add(String.format("{\"Número na Fila\": %d, %s, \"Tipo de atendimento\": \"Geral\"}",
-                        numeroDeListasPercorrer++, controllerTriListaB.obterFormatado(i)));
+                itens2.add(String.format("{\"Número na Fila\": %d, %s,%s, \"Tipo de atendimento\": \"Geral\"}",
+                        numeroDeListasPercorrer++,controllerTriListaB.obterFormatadoNome(i) ,controllerTriListaB.obterFormatado(i)));
             }
             contadorDasListas += tamanhoB;
         }
@@ -126,10 +129,11 @@ public class ControllerTriMain {
 
     @PostMapping
     public String inserirPaciente(@RequestBody PacienteTriagemDTO triagemDTO){
-      Paciente paciente = new Paciente(triagemDTO.getSenha(), triagemDTO.getNome_completo(),
-              triagemDTO.getCPF(), triagemDTO.getTelefone(), triagemDTO.getEmail(),triagemDTO.getRua(),
-              triagemDTO.getCep(), triagemDTO.getGenero(), triagemDTO.getNome_completo(), triagemDTO.getTipo_de_atendimento());
-        System.out.println(paciente.getSenha());
+        Paciente paciente = new Paciente(triagemDTO.getSenha(), triagemDTO.getNome_completo(),
+                triagemDTO.getCPF(), triagemDTO.getTelefone(), triagemDTO.getEmail(),triagemDTO.getRua(),
+                triagemDTO.getCep(), triagemDTO.getGenero(), triagemDTO.getData_nascimento(), triagemDTO.getTipo_de_atendimento());
+
+        System.out.println(paciente.getNome());
         if ("Emergência".equals(triagemDTO.getTipo_de_atendimento())) {
             controllerTriListaA.adicionarNovoPaciente(paciente);
         } else if ("Prioritário I".equals(triagemDTO.getTipo_de_atendimento())) {

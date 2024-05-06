@@ -19,7 +19,8 @@ public class Paciente<TIPO> {
     String nome ;
     String cpf;
 
-    public Paciente(String senha, String nomeCompleto, String cpf, String telefone, String email, String rua, String cep, String genero, String dataNascimento, String tipoDeAtendimento) {
+    public Paciente(String senha, String nomeCompleto, String cpf, String telefone, String email, String rua,
+                    String cep, String genero, String dataNascimento, String tipoDeAtendimento) {
         this.senha = senha;
         this.nome = nomeCompleto;
         this.cpf = cpf;
@@ -31,6 +32,7 @@ public class Paciente<TIPO> {
         this.dataNascimento = dataNascimento;
         this.tipoDeAtendimento = tipoDeAtendimento;
     }
+
 
     String telefone ;
     String email ;

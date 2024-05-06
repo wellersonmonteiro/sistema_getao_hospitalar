@@ -82,7 +82,16 @@ public class ControllerTriListaB {
         }
     }
     public String adicionarNovoPaciente(Paciente paciente) {
-        listaTriPacientesB.adicionar(String.valueOf(paciente));
+        listaTriPacientesB.adicionarGererico(paciente);;
         return "{\"senha\":\""+paciente.getSenha()+"\"}";
+    }
+    public String obterFormatadoNome(int indice){
+        if(listaTriPacientesB.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesB.getElemento(indice);
+            return String.format("\"nome\":\"%s\"",
+                    primeiroPaciente.getNome());
+        }else{
+            return "";
+        }
     }
 }

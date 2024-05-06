@@ -38,14 +38,14 @@ public class ControllerTriListaA {
         String novaSenha = "A" + (valor + 1);
         Hora horaAtual = ()-> LocalTime.now();
         Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha); // Cria um novo paciente com a nova senha
-        listaTriPacientesA.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        listaTriPacientesA.adicionarGererico(novoPaciente); // Adiciona o novo paciente à lista
         valor++; //
 
         return  "{\"senha\":\""+novaSenha+"\"}";
     }
 
     public String adicionarNovoPaciente(Paciente paciente) {
-        listaTriPacientesA.adicionar(String.valueOf(paciente));
+        listaTriPacientesA.adicionarGererico(paciente);
         return "{\"senha\":\""+paciente.getSenha()+"\"}";
     }
 
@@ -97,4 +97,13 @@ public class ControllerTriListaA {
         return listaTriPacientesA.getTamanho();
     }
 
+    public String obterFormatadoNome(int indice){
+        if(listaTriPacientesA.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesA.getElemento(indice);
+            return String.format("\"nome\":\"%s\"",
+                    primeiroPaciente.getNome());
+        }else{
+            return "";
+        }
+    }
 }

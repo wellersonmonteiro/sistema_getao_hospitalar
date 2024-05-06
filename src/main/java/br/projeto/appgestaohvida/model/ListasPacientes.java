@@ -140,6 +140,16 @@ public class ListasPacientes<TIPO> {
 
         this.tamanho--;
     }
+    public void adicionarGererico(Paciente<TIPO> novoPaciente) {
+        if (this.primeiro == null && this.ultimo == null) {
+            this.primeiro = novoPaciente;
+            this.ultimo = novoPaciente;
+        } else {
+            this.ultimo.setProximo(novoPaciente);
+            this.ultimo = novoPaciente;
+        }
+        this.tamanho++;
+    }
 
 
 
