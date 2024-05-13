@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
 public class ControllerListaVermelha {
     private int valor = 0;
-private ListasPacientes<PacienteDTO> listaVermelha = new ListasPacientes<>();
+private ListasPacientes<Paciente> listaVermelha = new ListasPacientes<>();
 
     @GetMapping
     public String obterPrimeiraSenha() {
@@ -44,5 +44,29 @@ private ListasPacientes<PacienteDTO> listaVermelha = new ListasPacientes<>();
 
     public boolean temListaVermelha() {
         return (listaVermelha.getTamanho() > 0);
+    }
+    public int tamanhoList(){
+        return listaVermelha.getTamanho();
+    }
+    public String obterFormatadoNome(int indice){
+
+        Paciente primeiroPaciente = listaVermelha.getElemento(indice);
+        return String.format("\"nome\":\"%s\",\"senhaCor\":\"%s\",\"senha\":\"%s\"",
+                primeiroPaciente.getNome(), primeiroPaciente.getSenhaCor(), primeiroPaciente.getSenha());
+    }
+    public String obterFormatado(int indice){
+        if(listaVermelha.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaVermelha.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+    }
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaVermelha.adicionarGererico(paciente);
+        String novaSenha = "Vermelha" + (valor + 1);
+        paciente.setSenhaCor(novaSenha);
+        return "{\"senha\":\""+paciente.getSenha()+"\"}";
     }
 }

@@ -18,6 +18,7 @@ public class Paciente<TIPO> {
     String hora = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     String nome ;
     String cpf;
+    String senhaCor;
 
     public Paciente(String senha, String nomeCompleto, String cpf, String telefone, String email, String rua,
                     String cep, String genero, String dataNascimento, String tipoDeAtendimento) {
@@ -31,6 +32,12 @@ public class Paciente<TIPO> {
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.tipoDeAtendimento = tipoDeAtendimento;
+    }
+
+    public Paciente(String nome, String senha, String cpf){
+        this.nome = nome;
+        this.senha = senha;
+        this.cpf = null;
     }
 
 

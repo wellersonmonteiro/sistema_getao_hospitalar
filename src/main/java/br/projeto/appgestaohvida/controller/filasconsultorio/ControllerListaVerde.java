@@ -44,4 +44,28 @@ public class ControllerListaVerde {
     public boolean temListaVerde() {
         return (listaVerde.getTamanho() > 0);
     }
+    public int tamanhoList(){
+        return listaVerde.getTamanho();
+    }
+    public String obterFormatadoNome(int indice){
+
+        Paciente primeiroPaciente = listaVerde.getElemento(indice);
+        return String.format("\"nome\":\"%s\",\"senhaCor\":\"%s\",\"senha\":\"%s\"",
+                primeiroPaciente.getNome(), primeiroPaciente.getSenhaCor(), primeiroPaciente.getSenha());
+    }
+    public String obterFormatado(int indice){
+        if(listaVerde.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaVerde.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+    }
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaVerde.adicionarGererico(paciente);
+        String novaSenha = "Verde" + (valor + 1);
+        paciente.setSenhaCor(novaSenha);
+        return "{\"senha\":\""+paciente.getSenha()+"\"}";
+    }
 }

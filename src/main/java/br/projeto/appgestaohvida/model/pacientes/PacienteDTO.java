@@ -18,6 +18,7 @@ public class PacienteDTO<TIPO> {
     LocalTime now = LocalTime.now();
 
     String senha;
+    String nomeCompleto;
     String hora = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     private PacienteDTO<TIPO> proximo;
 
