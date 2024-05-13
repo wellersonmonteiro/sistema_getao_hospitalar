@@ -66,6 +66,7 @@ public class ControllerListaVerde {
         listaVerde.adicionarGererico(paciente);
         String novaSenha = "Verde" + (valor + 1);
         paciente.setSenhaCor(novaSenha);
+        valor++;
         return "{\"senha\":\""+paciente.getSenha()+"\"}";
     }
 }

@@ -66,6 +66,7 @@ private ListasPacientes<Paciente> listaVermelha = new ListasPacientes<>();
     public String adicionarNovoPaciente(Paciente paciente) {
         listaVermelha.adicionarGererico(paciente);
         String novaSenha = "Vermelha" + (valor + 1);
+        valor++;
         paciente.setSenhaCor(novaSenha);
         return "{\"senha\":\""+paciente.getSenha()+"\"}";
     }
