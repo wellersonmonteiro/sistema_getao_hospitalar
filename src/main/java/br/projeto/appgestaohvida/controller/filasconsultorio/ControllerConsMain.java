@@ -5,6 +5,9 @@ import br.projeto.appgestaohvida.model.pacientes.PacienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/consultorio/main")
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
@@ -46,6 +49,8 @@ public class ControllerConsMain {
     public String adicionarPaciente(@RequestBody PacienteDTO condicoes) {
         String corFila;
 
+        Paciente paciente = new Paciente(condicoes.getNomeCompleto(), condicoes.getSenha(), null);
+
         // Verifica as condicoes do paciente para determinar a cor da fila
         if (condicoes.isViaAerea() || condicoes.isRespiracaoIneficaz() || condicoes.isChoque() ||
                 condicoes.isNaoRespondeEstimulo() || condicoes.isEmConvulsao()) {
@@ -67,19 +72,19 @@ public class ControllerConsMain {
         switch (corFila) {
             case "vermelha":
                 // Adicionar a lista vermelha
-                controllerListaVermelha.cadastrarNovoPaciente();
+                controllerListaVermelha.adicionarNovoPaciente(paciente);
                 break;
             case "amarela":
                 // Adicionar a lista amarela
-                controllerListaAmarela.cadastrarNovoPaciente();
+                controllerListaAmarela.adicionarNovoPaciente(paciente);
                 break;
             case "verde":
                 // Adicionar a lista verde
-                controllerListaVerde.cadastrarNovoPaciente();
+                controllerListaVerde.adicionarNovoPaciente(paciente);
                 break;
             case "azul":
                 // Adicionar a lista azul
-                controllerListaAzul.cadastrarNovoPaciente();
+                controllerListaAzul.adicionarNovoPaciente(paciente);
                 break;
             default:
 
@@ -87,6 +92,59 @@ public class ControllerConsMain {
         }
 
         return "Paciente adicionado com sucesso a fila " + corFila;
+    }
+
+    @GetMapping
+    @RequestMapping("/conjuntolistas")
+    public String conjuntoListas2() {
+        StringBuilder resposta2 = new StringBuilder("[");
+        List<String> itens2 = new ArrayList<>();
+
+        int contadorDasListas = 0;
+        int numeroDeListasPercorrer = 1;
+
+        if (controllerListaVermelha.temListaVermelha()) {
+            int tamanhoA = Math.min(controllerListaVermelha.tamanhoList(), 10 - contadorDasListas);
+            for (int i = 0; i < tamanhoA; i++) {
+                itens2.add(String.format("{\"Número na Fila\": %d, %s, \"Tipo de atendimento\": \"Emergência\"}",
+                        numeroDeListasPercorrer++,controllerListaVermelha.obterFormatadoNome(i) ));
+            }
+            contadorDasListas += tamanhoA;
+        }
+
+        if (contadorDasListas < 10 && controllerListaAmarela.temListaAmarela()) {
+            int tamanhoPP = Math.min(controllerListaAmarela.tamanhoList(), 10 - contadorDasListas);
+            for (int i = 0; i < tamanhoPP; i++) {
+                itens2.add(String.format("{\"Número na Fila\": %d,%s,  \"Tipo de atendimento\": \"Prioritário I\"}",
+                        numeroDeListasPercorrer++,controllerListaAmarela.obterFormatadoNome(i)));
+            }
+            contadorDasListas += tamanhoPP;
+        }
+
+        if (contadorDasListas < 10 && controllerListaVerde.temListaVerde()) {
+            int tamanhoP = Math.min(controllerListaVerde.tamanhoList(), 10 - contadorDasListas);
+            for (int i = 0; i < tamanhoP; i++) {
+                itens2.add(String.format("{\"Número na Fila\": %d, %s,  \"Tipo de atendimento\": \"Prioritário II\"}",
+                        numeroDeListasPercorrer++,controllerListaVerde.obterFormatadoNome(i),controllerListaVerde.obterFormatado(i)));
+            }
+            contadorDasListas += tamanhoP;
+        }
+
+        if (contadorDasListas < 10 && controllerListaAzul.temListaAzul()) {
+            int tamanhoB = Math.min(controllerListaAzul.tamanhoList(), 10 - contadorDasListas);
+            for (int i = 0; i < tamanhoB; i++) {
+                itens2.add(String.format("{\"Número na Fila\": %d, %s,%s, \"Tipo de atendimento\": \"Geral\"}",
+                        numeroDeListasPercorrer++,controllerListaAzul.obterFormatadoNome(i) ,controllerListaAzul.obterFormatado(i)));
+            }
+            contadorDasListas += tamanhoB;
+        }
+
+        resposta2.append(String.join(", ", itens2));
+        resposta2.append("]");
+
+        System.out.println("Resposta JSON gerada Consultório: " + resposta2);
+
+        return resposta2.toString();
     }
 
 }

@@ -11,40 +11,41 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/listas/main")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:63342/", "https://example.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")//Colocar o endereço do servidor front end
 public class ControllerMain {
-
     @Autowired
-    private ControllerListaPP controllerListaPP;
-
+    ControllerListaPP controllerListaPP;
     @Autowired
-    private ControllerListaP controllerListaP;
-
+    ControllerListaP controllerListaP;
     @Autowired
-    private ControllerListaB controllerListaB;
-
+    ControllerListaB controllerListaB;
     @Autowired
-    private ContrellerListaA controllerListaA;
-
+    ContrellerListaA controllerListaA;
     @GetMapping
     public String main() {
-        String resposta;
-
-        if (controllerListaA.temListaA()) {
-            resposta = controllerListaA.obterPrimeiraSenha();
+        if (controllerListaA.temListaA()){
+            String resposta = controllerListaA.obterPrimeiraSenha();
             controllerListaA.retirarLista();
+
             return resposta;
-        } else if (controllerListaPP.temListaPP()) {
-            resposta = controllerListaPP.obterPrimeiraSenha();
+        }
+        else if (controllerListaPP.temListaPP()) {
+            String resposta = controllerListaPP.obterPrimeiraSenha();
             controllerListaPP.retirarLista();
+
             return resposta;
+
         } else if (controllerListaP.temListaP()) {
-            resposta = controllerListaP.obterPrimeiraSenha();
+
+            String resposta = controllerListaP.obterPrimeiraSenha();
             controllerListaP.retirarLista();
+
             return resposta;
-        } else {
-            resposta = controllerListaB.obterPrimeiraSenha();
+
+        }else{
+            String resposta = controllerListaB.obterPrimeiraSenha();
             controllerListaB.retirarLista();
+
             return resposta;
         }
     }
@@ -101,4 +102,5 @@ public class ControllerMain {
 
         return resposta.toString();
     }
+
 }

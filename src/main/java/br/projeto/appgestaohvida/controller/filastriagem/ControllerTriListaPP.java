@@ -22,8 +22,9 @@ public class ControllerTriListaPP {
     public String obterPrimeiraSenha() {
         if (listaTriPacientesPP.getTamanho() > 0) {
             Paciente primeiroPaciente = listaTriPacientesPP.getPrimeiro();
-            return "{\"senha\":\""+  primeiroPaciente.getSenha()+"\",\"hora\"" +
-                    ":"+primeiroPaciente.getHora()+"}";        } else {
+            return String.format("{\"senha\":\"%s\",\"hora\":\"%s\"}",
+                    primeiroPaciente.getSenha(), primeiroPaciente.getHora());
+        } else {
 
             return "{\"senha\":\"Sem atendimento\"}";
         }
@@ -33,7 +34,8 @@ public class ControllerTriListaPP {
     public String cadastrarNovoPaciente() {
         String novaSenha = "PP" + (valor + 1); // Gera uma nova senha
         Hora horaAtual = ()-> LocalTime.now();
-        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);        listaTriPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
+        Paciente novoPaciente = new Paciente(horaAtual.toString(),novaSenha);
+        listaTriPacientesPP.adicionar(String.valueOf(novoPaciente)); // Adiciona o novo paciente à lista
         valor++; // Incrementa o valor para a próxima senha
 
         return "{\"senha\":\""+novaSenha+"\"}";
@@ -41,8 +43,8 @@ public class ControllerTriListaPP {
     @DeleteMapping
     public String retirarLista(){
         if (temListaPP()){
-        listaTriPacientesPP.excluirPrimeiro();
-        return "Paciente removido com sucesso!";
+            listaTriPacientesPP.excluirPrimeiro();
+            return "Paciente removido com sucesso!";
         }
         else {
             return "{\"senha\":\"Sem atendimento\"}";
@@ -52,4 +54,46 @@ public class ControllerTriListaPP {
     public boolean temListaPP() {
         return (listaTriPacientesPP.getTamanho() > 0);
     }
+
+    public String obterFormatado(int indice){
+        if(listaTriPacientesPP.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaTriPacientesPP.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+    }
+    public int tamanhoList(){
+        return listaTriPacientesPP.getTamanho();
+    }
+    @DeleteMapping("/tirarFila")
+    public boolean retirarFila(String senha) {
+        int indexToRemove = -1; // Inicializa como -1 para indicar que nenhum elemento correspondente foi encontrado
+        for (int i = 0; i < listaTriPacientesPP.getTamanho(); i++) {
+            String senhaComparar = listaTriPacientesPP.getElemento(i).getSenha();
+            if (senhaComparar.equals(senha)) {
+                indexToRemove = i; // Armazena a posição do elemento a ser removido
+                break; // Sai do loop assim que encontrar o elemento
+            }
+        }
+
+        if (indexToRemove != -1) { // Verifica se um elemento correspondente foi encontrado
+            listaTriPacientesPP.removerPorIndice(indexToRemove); // Remove o elemento da lista
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaTriPacientesPP.adicionarGererico(paciente);
+        return "{\"senha\":\"" + paciente.getSenha() + "\"}";
+    }
+    public String obterFormatadoNome(int indice){
+
+        Paciente primeiroPaciente = listaTriPacientesPP.getElemento(indice);
+        return String.format("\"nome\":\"%s\"",
+                primeiroPaciente.getNome() );
+    }
+
 }

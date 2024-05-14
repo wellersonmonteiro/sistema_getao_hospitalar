@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/consultorio/azul")
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "https://example.com"}, allowCredentials = "true")
 public class ControllerListaAzul {
+    private final ControllerListaVerde controllerListaVerde;
     private int valor = 0;
     private ListasPacientes<Paciente> listaAzul = new ListasPacientes<>();
+
+    public ControllerListaAzul(ControllerListaVerde controllerListaVerde) {
+        this.controllerListaVerde = controllerListaVerde;
+    }
 
     @GetMapping
     public String obterPrimeiraSenha() {
@@ -43,5 +48,32 @@ public class ControllerListaAzul {
 
     public boolean temListaAzul() {
         return (listaAzul.getTamanho() > 0);
+    }
+
+    public int tamanhoList(){
+        return listaAzul.getTamanho();
+    }
+    public String obterFormatadoNome(int indice){
+
+        Paciente primeiroPaciente = listaAzul.getElemento(indice);
+        return String.format("\"nome\":\"%s\",\"senhaCor\":\"%s\",\"senha\":\"%s\"",
+                primeiroPaciente.getNome(), primeiroPaciente.getSenhaCor(), primeiroPaciente.getSenha());
+    }
+    public String obterFormatado(int indice){
+        if(listaAzul.getTamanho() > 0) {
+            Paciente primeiroPaciente = listaAzul.getElemento(indice);
+            return String.format("\"hora\":\"%s\",\"senha\":\"%s\"",
+                    primeiroPaciente.getHora(), primeiroPaciente.getSenha());
+        }else{
+            return "";
+        }
+
+    }
+    public String adicionarNovoPaciente(Paciente paciente) {
+        listaAzul.adicionarGererico(paciente);
+        String novaSenha = "Azul" + (valor + 1);
+        paciente.setSenhaCor(novaSenha);
+        valor++;
+        return "{\"senha\":\""+paciente.getSenha()+"\"}";
     }
 }

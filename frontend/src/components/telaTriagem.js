@@ -16,24 +16,11 @@ function atualizarHorario() {
 
     elementoHorario.textContent = horarioFormatado;
 }
+
 setInterval(atualizarHorario, 1000);
 
-function selecionarSenha() {
-
-    const displaySenha = document.getElementById('displaySenha');
-    const valorSenha = displaySenha.textContent.trim();
-
-    const displayPrioridade = document.getElementById('displayPrioridade');
-    const prioridadeTexto = displayPrioridade.textContent.trim();
-
-    localStorage.setItem('Tipo de atendimento', prioridadeTexto);
-    localStorage.setItem('senha', valorSenha);
-
-    window.location.href = '../pages/ficha-atendimento.html';
-}
-
 async function buscarConjuntoDeListas() {
-    const endpoint = 'http://localhost:8080/listas/main/conjuntolistas';
+    const endpoint = 'http://localhost:8080/listatriagem/main/conjuntolistas';
     try {
         const resposta = await fetch(endpoint);
 
@@ -56,12 +43,6 @@ async function exibirConjuntoDeListas() {
         const conjuntoDeListas = await buscarConjuntoDeListas();
         console.log("Dados recebidos:", conjuntoDeListas);
 
-        const primeiroPaciente = conjuntoDeListas[0];
-        const senhaDoPrimeiroPaciente = primeiroPaciente.senha;
-
-        const displaySenha = document.getElementById("displaySenha");
-        displaySenha.textContent = senhaDoPrimeiroPaciente;
-
         const tabelaPacientes = document.querySelector("#pacientesTable tbody");
         tabelaPacientes.innerHTML = "";
 
@@ -69,6 +50,7 @@ async function exibirConjuntoDeListas() {
             const novaLinha = document.createElement("tr");
             novaLinha.innerHTML = `
                 <td>${item["Número na Fila"]}</td>
+                <td>${item["nome"]}</td>
                 <td>${item["hora"]}</td>
                 <td>${item["senha"]}</td>
                 <td>${item["Tipo de atendimento"]}</td>`;
@@ -107,12 +89,12 @@ window.addEventListener("load", exibirPrimeiraSenha);
 
 async function exibirSegundaSenha() {
     try {
-        const resposta = await fetch('http://localhost:8080/listas/main');
+        const resposta = await fetch('http://localhost:8080/listatriagem/main');
 
         if (!resposta.ok) {
             throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
         }
-          const dados = await resposta.json();
+        const dados = await resposta.json();
         if (dados && dados.senha) {
             const displaySenha = document.getElementById('displaySenha');
             displaySenha.textContent = dados.senha;
@@ -144,12 +126,12 @@ function anunciarSenha() {
     fala.pitch = 0.6; // Tom (1 é o tom normal)
     fala.volume = 1; // Volume (1 é o volume máximo)
 
-     speechSynthesis.speak(fala);
+    speechSynthesis.speak(fala);
 }
 
 async function mostrarTipoAtendimentoPrimeiroElemento() {
     try {
-        const url = 'http://localhost:8080/listas/main/conjuntolistas';
+        const url = 'http://localhost:8080/listatriagem/main/conjuntolistas';
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -159,7 +141,7 @@ async function mostrarTipoAtendimentoPrimeiroElemento() {
         const dados = await response.json();
 
         if (dados.length > 0) {
-             const tipoAtendimento = dados[0]['Tipo de atendimento'];
+            const tipoAtendimento = dados[0]['Tipo de atendimento'];
             const displayPrioridade = document.getElementById('displayPrioridade');
 
             displayPrioridade.textContent = tipoAtendimento;
@@ -172,3 +154,45 @@ async function mostrarTipoAtendimentoPrimeiroElemento() {
 }
 mostrarTipoAtendimentoPrimeiroElemento();
 
+async function mostrarNomePrimeiroElemento() {
+    try {
+        const url = 'http://localhost:8080/listatriagem/main/conjuntolistas';
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar os dados JSON');
+        }
+
+        const dados = await response.json();
+
+        if (dados.length > 0) {
+            const nome = dados[0]['nome'];
+            const displayNome = document.getElementById('displayNome');
+
+            displayNome.textContent = nome;
+        } else {
+            console.error('A fila está vazia');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar os dados ou processar a resposta:', error);
+    }
+}
+mostrarNomePrimeiroElemento();
+
+function selecionarSenha() {
+
+    const displaySenha = document.getElementById('displaySenha');
+    const valorSenha = displaySenha.textContent.trim();
+
+    const displayPrioridade = document.getElementById('displayPrioridade');
+    const prioridadeTexto = displayPrioridade.textContent.trim();
+
+    const displayNome = document.getElementById('displayNome');
+    const valorNome = displayNome.textContent.trim();
+
+    localStorage.setItem('Tipo de atendimento', prioridadeTexto);
+    localStorage.setItem('senha', valorSenha);
+    localStorage.setItem('nome', valorNome);
+
+    window.location.href = '../pages/ficha-atendimento-triagem.html';
+}
