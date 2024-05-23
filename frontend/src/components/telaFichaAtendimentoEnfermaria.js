@@ -21,6 +21,7 @@ function atualizarHorario() {
 
 setInterval(atualizarHorario, 1000);
 
+
 function enviarDadosPaciente() {
     const pacienteData = {
         nomeCompleto: document.getElementById("nomeCompleto").value,
@@ -60,13 +61,43 @@ function enviarDadosPaciente() {
         })
         .then(data => {
             console.log("Resposta do servidor:", data);
-            ativarMain();
+            // Acionar método GET após envio bem-sucedido do POST
+            solicitarDadosTriagem();
+            // Redirecionar para a página após o envio bem-sucedido
+            window.location.href = '../pages/sala-triagem-consultorio.html';
         })
         .catch(error => {
             console.error("Erro ao adicionar paciente:", error);
         });
 }
 
+// Definição da função solicitarDadosTriagem no mesmo escopo que enviarDadosPaciente
+function solicitarDadosTriagem() {
+    fetch("http://localhost:8080/listatriagem/main", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao solicitar dados de triagem");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Dados de triagem recebidos:", data);
+            // Faça algo com os dados recebidos, como exibir na página
+        })
+        .catch(error => {
+            console.error("Erro ao solicitar dados de triagem:", error);
+        });
+}
+
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    enviarDadosPaciente();
+});
 async function ativarMain() {
     try {
         const response = await fetch('http://localhost:8080/consultorio/main');
@@ -95,10 +126,7 @@ async function ativarMain() {
     }
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    enviarDadosPaciente();
-});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const senha = localStorage.getItem('senha');

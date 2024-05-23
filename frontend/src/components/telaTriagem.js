@@ -76,7 +76,7 @@ async function exibirPrimeiraSenha() {
             displaySenha.textContent = senhaDoPrimeiroPaciente;
         } else {
             const displaySenha = document.getElementById("displaySenha");
-            displaySenha.textContent = "Sem senha disponível na fila.";
+            displaySenha.textContent = "--";
         }
 
     } catch (erro) {
@@ -196,3 +196,4 @@ function selecionarSenha() {
 
     window.location.href = '../pages/ficha-atendimento-triagem.html';
 }
+

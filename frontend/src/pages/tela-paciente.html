@@ -5,31 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../src/assets/favicon.png" type="image/x-icon">
     <title>Tótem de Atendimento | Paciente</title>
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="../styles/cards.css" rel="stylesheet">
 </head>
 
 
 <main>
+    <div class="dropdown dropdown-top-right">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="../pages/painel-senhas-recepcao.html" target="_blank">Painel Recepção</a></li>
+            <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
+        </ul>
+    </div>
     <div class="d-flex flex-column justify-content-start p-4">
         <div class="content">
             <div class="row align-items-center">
                   <div class="col-md-8 d-flex align-items-center ps-5">
                     <img src="../assets/logotipo-clinica-vitallis.png" alt="Logotipo Clinica Médica" class="me-3" style="width: 80px;">
-                    <h1 class="display-4 fs-4 mb-0">Seja bem-vindo(a) à Clínica Vitallis</h1>
+                    <h1 class="display-4 fs-5 mb-0">Seja bem-vindo(a) à Clínica Vitallis</h1>
                 </div>
                 <div class="col-md-4 text-end">
-                    <p id="horarioAtual" class="fw-regular mb-0 pe-5 fs-4"></p>
+                    <p id="horarioAtual" class="fw-lighter mb-0 pe-5 fs-3"></p>
                 </div>
             </div>
         </div>
             <div class="pt-5">
-                <h2 class="display-4 fs-4 ps-5 pt-4 text-uppercase fw-bold">Selecione o Tipo de Atendimento:</h2>
+                <h2 class="display-4 fs-4 ps-5 pt-3 text-uppercase fw-bold">Selecione o Tipo de Atendimento:</h2>
             </div>
         </div>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-2">
         <div class="row">
             <!-- Card Emergência -->
             <div class="col-md-6 mb-4">
@@ -58,7 +69,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Prioritário</h5>
-                        <p class="card-text">Prioritário para pessoas com idade superior a 60 anos ou  deficentes.</p>
+                        <p class="card-text">Prioritário para pessoas com idade superior a 60 anos e/ou  deficentes.</p>
                         <a href="#" id="botaoSolicitarSenhaP" class="btn btn-warning">Solicitar Senha</a>
                     </div>
                 </div>
@@ -66,8 +77,8 @@
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Prioridade Máxima</h5>
-                        <p class="card-text">PP</p>
+                        <h5 class="card-title">Prioritário II</h5>
+                        <p class="card-text">Pessoa com idade acima de 80 anos, mulheres grávidas e/ou crianças</p>
                         <a href="#" id="botaoSolicitarSenhaPP" class="btn btn-dark">Solicitar Senha</a>
                     </div>
                 </div>
@@ -79,11 +90,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card text-center">
-                    <div class="card-header bg-light text-dark fs-2">
+                    <div class="card-header bg-light text-dark fs-4">
                         SENHA
                     </div>
                     <div class="card-body bg-dark text-white text-center">
-                        <h2 id="displaySenha" class="display-4 text-uppercase text-center" style="font-family: 'Consolas', monospace;">- -</h2>
+                        <h2 id="displaySenha" class="display-5 text-uppercase text-center" style="font-family: 'Consolas', monospace;">- -</h2>
                     </div>
                 </div>
             </div>

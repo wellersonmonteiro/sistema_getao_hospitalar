@@ -18,6 +18,10 @@ function atualizarHorario() {
 }
 setInterval(atualizarHorario, 1000);
 
+
+
+
+
 async function buscarConjuntoDeListas() {
     const endpoint = 'http://localhost:8080/consultorio/main/conjuntolistas';
     try {
@@ -113,3 +117,26 @@ async function atualizarContagemPacientes() {
     }
 }
 window.addEventListener('load', atualizarContagemPacientes);
+
+async function solicitarDados() {
+    try {
+        const resposta = await fetch('http://localhost:8080/consultorio/main', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
+        }
+
+        // Recarregar a página imediatamente após a resposta do backend ser recebida com sucesso
+        window.location.reload();
+    } catch (erro) {
+        console.error('Erro ao solicitar dados:', erro);
+    }
+}
+
+// Adicionar evento de clique ao botão
+document.getElementById('btnSolicitarDados').addEventListener('click', solicitarDados);

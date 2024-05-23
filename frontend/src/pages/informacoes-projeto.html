@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
+    <title>Documentação do Projeto</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI";
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        .sidebar {
+            flex: 0 0 300px; /* Barra lateral ocupa 250px de largura */
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Altura total da viewport */
+            position: sticky;
+            top: 0;
+        }
+        .sidebar img {
+            text-align: center;
+            max-width: 60%;
+            height: auto;
+            display: block;
+            margin: 20px auto 40px; /* Centraliza a imagem horizontalmente e adiciona 20px de espaçamento abaixo dela */
+        }
+        .sidebar-text {
+            font-weight: lighter;
+            font-size: 17px;
+            margin-bottom: 10px; /* Espaçamento abaixo do texto */
+            padding: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #000;
+            margin-top: 10px;
+            padding: 10px 0 10px 20px;
+            display: block;
+            text-align: left;
+        }
+        .nav-link:hover {
+            color: rgba(0, 0, 0, 0.33);
+            background-color: #e9ecef;
+        }
+        .content {
+            flex: 1;
+            padding: 40px 100px 20px 60px;
+            border-bottom: #333333;
+        }
+        .content-container{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .title-container {
+            border-bottom: 2px solid #dee2e6;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .titulo {
+            font-size: 18px;
+            padding-left: 0px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            border-top: 1px solid #ddd;
+
+
+        }
+        .titulo:hover {
+            cursor: pointer; /* Muda o cursor para uma mãozinha indicando um link */
+            color: rgba(51, 51, 51, 0.76); /* Altera a cor do texto para indicar que é um link */
+            text-decoration: none; /* Adiciona um sublinhado para indicar que é um link */
+
+        }
+        .tituloSobre {
+            padding-bottom: 10px;
+            padding-top: 10px;
+            font-size: 18px;
+        }
+
+        .conteudo-secao {
+            line-height: 1.5;
+            font-size: 17px;
+            color: rgba(51, 51, 51, 0.88);
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+        .conteudoSecao {
+            line-height: 1.5;
+            font-size: 17px;
+            color: rgba(51, 51, 51, 0.88);
+        }
+        .active {
+            display: block;
+        }
+
+        .custom-table {
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        .custom-table th, .custom-table td {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 20px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .custom-table th {
+            background-color: #f2f2f2;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .custom-table tbody tr:nth-child(odd) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="text-center">
+        <a href="../pages/tela-paciente.html">
+            <img src="../assets/logotipo-clinica-vitallis.png" alt="Logotipo">
+        </a>
+        <div class="sidebar-text pt-5">Projeto Acadêmico realizado através da Universidade São Judas para a disciplina de Estrutura de Dados e Algoritmos</div>
+    </div>
+    <nav class="nav flex-column text-left w-100" id="sidebar-nav">
+    </nav>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+    <div class="title-container">
+        <h1>Documentação</h1>
+    </div>
+    <div class="content-container">
+        <h2 class="tituloSobre">SOBRE O PROJETO</h2>
+        <p class="conteudoSecao">O principal objetivo desse projeto é garantir uma resposta rápida e eficiente a situações de emergência médica. Isso envolve a capacidade de triagem rápida, atendimento imediato e intervenção adequada para estabilizar pacientes em condições críticas. Estabelecendo um sistema capaz de priorizar os casos com base na gravidade da condição do paciente, permitindo que os profissionais de saúde atendam primeiro aqueles com maior risco de vida.
+            Facilitar o acesso rápido a informações básicas médicas dos pacientes, incluindo condições médicas pré-existentes, alergias, sintomas. Isso ajuda os profissionais de saúde a tomar decisões rápidas baseado na triagem e nos dados informados durante o atendimento de emergência.
+            </p>
+    </div>
+
+    <div id="section1" class="section">
+        <h2 class="titulo">LINGUAGENS UTILIZADAS</h2>
+        <div class="section-content">
+            <p class="conteudo-secao">Este projeto foi desenvolvido utilizando Spring Boot, um framework Java amplamente utilizado para o desenvolvimento de aplicativos web e serviços RESTful.</p>
+            <ul>
+                <li class="conteudo-secao">Java</li>
+                <li class="conteudo-secao">HTML</li>
+                <li class="conteudo-secao">CSS</li>
+                <li class="conteudo-secao">JavaScript</li>
+            </ul>
+        </div>
+    </div>
+    <div id="section2" class="section">
+        <h2 class="titulo">EQUIPE DE PROJETO</h2>
+        <div class="section-content">
+            <p class="conteudo-secao">Para o execução desse projeto, foi realizada a divisão em três equipes: Gestão de Projetos, Desenvolvimento Backend e Desenvolvimento Frontend. Cada equipe desempenhou um papel específico para coordenar, construir e criar a interface do usuário, respectivamente, resultando em um projeto robusto e funcional.</p>
+            <p>GABRIEL NEULES GOMES RODRIGUES SOARES - RA: 822167394</p>
+            <p>LUCAS VASCONCELLOS RAMOS DE SOUSA - RA: 8222242709</p>
+            <p>MARIA VICTORIA BEZERRA DA SILVA - RA: 8222242697</p>
+            <p>PALOMA LOPES DE SOUSA - RA: 822167506</p>
+            <p>SARA ALVES CORDEIRO - RA: 822224386</p>
+            <p>STEPHANY SILVA DANTAS - RA: 822223694</p>
+            <p>WELLERSON RESENDE MONTEIRO - RA: 8222243349</p>
+        </div>
+    </div>
+    <div id="section3" class="section">
+        <h2 class="titulo">REGRAS DE NEGÓCIO</h2>
+        <div class="section-content">
+            <table class="custom-table">
+
+                <tbody>
+                <tr>
+                    <td>RN01</td>
+                    <td>As senhas de atendimento iniciais devem ser geradas aos pacientes com base na subdivisão das 4 categorias: Emergência A(“A”); Prioritário (“P”) pessoas com idade = > 60 anos e deficientes ; prioritário máximo PP(“PP”) pessoas com idade =>80 anos, mulheres grávidas, crianças <= 1 ano, Geral B (“B”). Nessa  ordem de prioridade e chegada</td>
+                </tr>
+                <tr>
+                    <td>RN02</td>
+                    <td>O campo Senha de Atendimento da tela Ficha de Atendimento é obrigatório e deve ser validado na base de senhas geradas.
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>RN03</td>
+                    <td>A Ficha de Triagem é somente liberada para preenchimento mediante a abertura da Ficha de Atendimento realizada pela recepção.</td>
+                </tr>
+                <tr>
+                    <td>RN04</td>
+                    <td>O paciente deve ser encaminhado ao Consultório Médico com prioridade de atendimento baseado na classificação de prioridade, chegada e aferição - realizada na triagem.
+                    Fila Vermelha:
+                        - Vias Áreas Obstruídas;
+                        - Respiração Ineficaz;
+                        - Choque;
+                        - Não Responde a Estímulos;
+                        - Convulsão;
+                        Fila Amarela:
+                        - Dores Severas;
+                        - Grande Hemorragia;
+                        - Alteração de Consciência;
+                        - Temperatura Corporal Acima de 39ºC;
+                        - Trauma Craniano;
+                        - Pequena Hemorragia;
+                        - Dores Moderadas;
+                        - Vômito Persistente;
+                        Fila Verde:
+                        - Temperatura Corporal Entre 38 de 39ºC;
+                        - Idoso ou Grávida Sintomático;
+                        Fila Azul:
+                        - Dores Leves;
+                        - Náuseas;
+                        - Temperatura Corporal Entre 37 de 38ºC;
+                        - Sem Hemorragia.
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="section4" class="section">
+        <h2 class="titulo">REQUISITOS FUNCIONAIS</h2>
+        <table class="custom-table">
+
+            <tbody>
+            <tr>
+                <td>RF01</td>
+                <td>O sistema deverá permitir o acesso a 3 perfis de usuários: Paciente, Recepção e Enfermaria.
+                </td>
+            </tr>
+            <tr>
+                <td>RF02</td>
+                <td>Os usuários “Recepção” e “Enfermaria” deverão acessar o sistema via login/senha.
+                </td>
+            </tr>
+            <tr>
+                <td>RF03</td>
+                <td>O sistema deverá permitir ao usuário da Recepção as seguintes funções: Anunciar Senha, Abrir Ficha de Atendimento, e Chamar Próximo Paciente.</td>
+            </tr>
+            <tr>
+                <td>RF04</td>
+                <td>O sistema deverá permitir ao usuário da Recepção a inserção de dados de cadastro do paciente como: (nome completo, cpf, data de nascimento, gênero, tipo de atendimento, telefone, e-mail, endereço, cep), salvar ficha de atendimento e encaminhar para a fila de triagem (enfermaria).</td>
+            </tr>
+            <tr>
+                <td>RF05</td>
+                <td>O sistema deverá permitir ao usuário da Enfermaria as seguintes funções: Anunciar Senha, Abrir Ficha de Triagem e Chamar Próximo Paciente.</td>
+            </tr>
+            <tr>
+                <td>RF06</td>
+                <td>O sistema deverá permitir ao usuário da Enfermaria a inserção de dados de aferição do paciente como nível de dor, temperatura, condições gerais do paciente, sinais de hemorragia e em casos de idoso ou grávida informar ,salvar ficha de atendimento e encaminhar para a fila de consultório médico.</td>
+            </tr>
+            <tr>
+                <td>RF07</td>
+                <td>O sistema deverá permitir acesso ao usuário “Paciente” solicitar senha de atendimento com base na classificação prioritária: A(“A”) Emergência; Prioritário (“P”) pessoas com idade = > 60 anos e deficientes ; prioritário máximo PP(“PP”) pessoas com idade =>80 anos, mulheres grávidas, crianças <= 1 ano,  B (“B”) Geral.</td>
+            </tr>
+            <tr>
+                <td>RF08</td>
+                <td>O sistema deverá exibir uma fila de pacientes que estão aguardando atendimento em ordem crescente, com as seguintes informações: Número na fila, horário de chegada, senha, tipo de atendimento.</td>
+            </tr>
+            <tr>
+                <td>RF09</td>
+                <td>O sistema deverá exibir uma fila de pacientes que estão aguardando atendimento em ordem crescente, com as seguintes informações: número da fila, nome, horário da abertura da ficha, senha, tipo de atendimento.</td>
+            </tr>
+            <tr>
+                <td>RF10</td>
+                <td>O sistema deverá exibir uma fila de pacientes que estão aguardando atendimento em ordem crescente, com as seguintes informações: número da fila, nome, cor - atendimento, senha, tipo de atendimento.</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.section');
+        const nav = document.getElementById('sidebar-nav');
+
+        sections.forEach(section => {
+            const id = section.getAttribute('id');
+            const title = section.querySelector('h2.titulo');
+
+            const navLink = document.createElement('a');
+            navLink.classList.add('nav-link');
+            navLink.href = `#${id}`;
+            navLink.innerText = title.innerText;
+            nav.appendChild(navLink);
+
+            navLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetSection = document.getElementById(id);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    });
+</script>
+</body>
+</html>

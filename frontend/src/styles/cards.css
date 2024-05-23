@@ -25,3 +25,16 @@
 .card-footer {
     background-color: #e9ecef; /* Cor de fundo do rodapé */
 }
+
+.dropdown-top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.btn svg {
+    width: 20px; /* Ajuste o tamanho do ícone conforme necessário */
+    height: 20px; /* Ajuste o tamanho do ícone conforme necessário */
+    vertical-align: middle; /* Alinha verticalmente o ícone ao centro */
+    fill: black; /* Define a cor do ícone para branco */
+}
+
