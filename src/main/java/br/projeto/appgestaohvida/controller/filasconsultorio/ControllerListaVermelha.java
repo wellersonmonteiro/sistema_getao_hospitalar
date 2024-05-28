@@ -25,7 +25,7 @@ private ListasPacientes<Paciente> listaVermelha = new ListasPacientes<>();
 
     @PostMapping
     public String cadastrarNovoPaciente() {
-        String novaSenha = "Vermelha" + (valor + 1);
+        String novaSenha = "Vermelha";
         Paciente novoPaciente = new Paciente(novaSenha);
         listaVermelha.adicionar(String.valueOf(novoPaciente));
         valor++;
