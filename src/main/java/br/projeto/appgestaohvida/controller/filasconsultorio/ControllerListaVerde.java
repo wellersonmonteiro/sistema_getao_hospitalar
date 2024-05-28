@@ -24,7 +24,7 @@ public class ControllerListaVerde {
 
     @PostMapping
     public String cadastrarNovoPaciente() {
-        String novaSenha = "Verde" + (valor + 1);
+        String novaSenha = "Verde" ;
         Paciente novoPaciente = new Paciente(novaSenha);
         listaVerde.adicionar(String.valueOf(novoPaciente));
         valor++;
