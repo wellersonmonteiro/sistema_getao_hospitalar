@@ -114,22 +114,28 @@
     </symbol>
     <symbol id="recepcao" viewBox="0 0 512 512">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM128 256a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM80 432c0-44.2 35.8-80 80-80h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z"/></svg>    </symbol>
+    <symbol id="medico" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-96 55.2C54 332.9 0 401.3 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-81-54-149.4-128-171.1V362c27.6 7.1 48 32.2 48 62v40c0 8.8-7.2 16-16 16H336c-8.8 0-16-7.2-16-16s7.2-16 16-16V424c0-17.7-14.3-32-32-32s-32 14.3-32 32v24c8.8 0 16 7.2 16 16s-7.2 16-16 16H256c-8.8 0-16-7.2-16-16V424c0-29.8 20.4-54.9 48-62V304.9c-6-.6-12.1-.9-18.3-.9H178.3c-6.2 0-12.3 .3-18.3 .9v65.4c23.1 6.9 40 28.3 40 53.7c0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.4 16.9-46.8 40-53.7V311.2zM144 448a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
+    </symbol>
+    <symbol id="consultorio" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96v32V480H384V128 96 56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM96 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H96V96zM416 480h32c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H416V480zM224 208c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v48h48c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H288v48c0 8.8-7.2 16-16 16H240c-8.8 0-16-7.2-16-16V320H176c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h48V208z"/></svg>
+    </symbol>
 </svg>
 
 
 <main class="container-fluid d-flex flex-nowrap" style="height: 100vh; overflow-y: auto;">
     <div class="row w-100 h-100">
         <div class="col-3 d-flex flex-column flex-shrink-0 p-3 bg-light overflow-auto">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-4 mt-md-4 me-md-auto link-dark text-decoration-none">
                 <img src="../assets/logotipo-clinica-vitallis.png" alt="Logo da Clínica Vitallis" width="25%" class="me-4">
                 <span class="fs-4">Clínica Vitallis</span>
             </a>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li class="nav-item">
                     <a href="../pages/painel-senhas-triagem.html" class="nav-link link-dark">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        Painel de Senhas
+                        Painel de Senhas Enfermaria
                     </a>
                 </li>
 
@@ -142,7 +148,7 @@
                 <li>
                     <a href="../pages/sala-triagem-consultorio.html" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#enfermaria"/></svg>
-                        Consultório Médico
+                        Sala Consultório Médico
                     </a>
                 </li>
                 <li class="nav-item">
@@ -169,118 +175,139 @@
             </div>
         </div>
 
-
         <div class="col-9 d-flex flex-column justify-content-start p-4 overflow-auto">
             <div class="content">
-
-                <div class="row align-items-center">
-                    <div class="dropdown dropdown-top-right text-end">
-                        <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="../pages/tela-paciente.html" target="_blank">Tótem de Atendimento</a></li>
-                            <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-8 d-flex align-items-center ps-3">
-
-                        <h1 class="display-4 fs-5 mt-4">Seja bem-vindo(a) à Clínica Vitallis</h1>
-                    </div>
-
-                    <div class="col-md-4 text-end">
-
-                        <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
-                    </div>
-                </div>
-
-                <div class="tituloPrincipal">
-                    <div class="pt-5">
-                        <h2 class="display-4 fs-3 fw-bolder pt-3 border-bottom pb-3">Sala de Espera | Consultório</h2>
-                    </div>
-
-
-
-                    <div class="row justify-content-center">
-                        <div class="col-auto">
-                            <button id="btnSolicitarDados" class="btn btn-light mb-1 mt-5">Chamar próximo Paciente</button>
+                <div class="container mt-2 mb-4 ">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 d-flex">
+                            <h1 class="display-4 fs-5">Seja bem-vindo(a) à Clínica Vitallis</h1>
                         </div>
-                    </div>
-                    <div class="row justify-content-center h-100 mt-5">
+                        <div class="col-md-3 text-end">
+                            <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
+                        </div>
 
-                        <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
-                                    Emergência
-                                </div>
-                                <div class="card-body bg-light-silver text-center">
-                                    <h2 id="emergencia" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bloco 2 -->
-                        <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
-                                    Prioritário II
-                                </div>
-                                <div class="card-body bg-light-silver text-center">
-                                    <h2 id="prioritarioII" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bloco 3 -->
-                        <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
-                                    Prioritário I
-                                </div>
-                                <div class="card-body bg-light-silver text-center">
-                                    <h2 id="prioritarioI" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bloco 4 -->
-                        <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
-                                    Geral
-                                </div>
-                                <div class="card-body bg-light-silver text-center">
-                                    <h2 id="geral" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Linha final com bloco ocupando 50% -->
-                    <div class="row justify-content-center">
-                        <!-- Bloco 5 -->
-                        <div class="col-lg-4 block mt-4">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
-                                    Total
-                                </div>
-                                <div class="card-body bg-light-silver text-center">
-                                    <h2 id="total" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="dropdown dropdown-top-right text-end">
+                                <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="../pages/tela-paciente.html" target="_blank">Tótem de Atendimento</a></li>
+                                    <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="container">
+                <div class="tituloPrincipal border-bottom pb-3">
+                    <div class="pt-5 d-flex align-items-center">
+                        <svg class="bi pe-none me-2" width="15" height="15">
+                            <use xlink:href="#medico"/>
+                        </svg>
+                        <h2 class="display-4 fs-3 fw-bolder mb-0 ps-3">Sala de Espera | Consultório</h2>
+                    </div>
+                </div>
+
+
+
+                <div class="row justify-content-center">
+                    <div class="row justify-content-center h-100 mt-2 mb-4">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3 block mt-4">
+                                <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                    <div class="card-header bg-light text-dark fs-6">
+                                        Total
+                                    </div>
+                                    <div class="card-body bg-light-silver text-center">
+                                        <h2 id="total" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-lg-3 block">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #f25f5c;">
+                                    Vermelha
+                                </div>
+                                <div class="card-body bg-light-silver text-center">
+                                    <h2 id="vermelha" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 block">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-secondary fs-6" style="background: #ffe066;">
+                                    Amarela
+                                </div>
+                                <div class="card-body bg-light-silver text-center">
+                                    <h2 id="amarela" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 block">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #70c1b3;">
+                                    Verde
+                                </div>
+                                <div class="card-body bg-light-silver text-center">
+                                    <h2 id="verde" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 block">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #1982c4;">
+                                    Azul
+                                </div>
+                                <div class="card-body bg-light-silver text-center">
+                                    <h2 id="azul" class="display-4 text-uppercase text-center fs-2 fw-normal"></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
 
-            <div class="col-9 d-flex flex-column justify-content-start p-1">
-                <div class="pt-5">
-                </div>
-            </div>
 
-            <div class="container text-center">
-                <table class="table table-striped" id="pacientesTable">
-                    <thead>
-                    <tr>
+            <div class="col-12 d-flex flex-column justify-content-start">
+                <div class="container">
+                    <div class="tituloPrincipal border-bottom pb-3">
+                        <div class="pt-5 d-flex align-items-center">
+                            <svg class="bi pe-none me-2" width="15" height="15">
+                                <use xlink:href="#consultorio"/>
+                            </svg>
+                            <div class="container my-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h2 class="display-4 fs-3 fw-bolder ps-3">Fila de Atendimento</h2>
+                                    </div>
+                                    <div class="col text-end">
+                                        <button id="btnSolicitarDados" class="btn btn-light shadow-sm">Chamar próximo Paciente</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end pt-3 fw-light fs-5">
+                    <label class="" for="filtroAtendimento">Filtrar por Tipo de Atendimento:</label>
+                    <select id="filtroAtendimento">
+                        <option value="todos">Todos</option>
+                        <option value="Geral">Geral</option>
+                        <option value="Emergência">Emergência</option>
+                        <option value="Prioritário I">Prioritário I</option>
+                        <option value="Prioritário II">Prioritário II</option>
+                    </select>
+                </div>
+                <div class="container text-center pt-3">
+                    <table class="table" id="pacientesTable">
+                        <thead>
+                        <tr>
                         <th>Número na Fila</th>
                         <th>Nome</th>
                         <th>Cor - Atendimento</th>
@@ -294,7 +321,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 </main>
 
 
@@ -305,3 +332,5 @@
 </body>
 
 </html>
+
+

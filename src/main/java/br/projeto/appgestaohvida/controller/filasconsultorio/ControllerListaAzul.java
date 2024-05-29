@@ -29,7 +29,7 @@ public class ControllerListaAzul {
 
     @PostMapping
     public String cadastrarNovoPaciente() {
-        String novaSenha = "Azul" + (valor + 1);
+        String novaSenha = "Azul";
         Paciente novoPaciente = new Paciente(novaSenha);
         listaAzul.adicionar(String.valueOf(novoPaciente));
         valor++;
@@ -71,7 +71,7 @@ public class ControllerListaAzul {
     }
     public String adicionarNovoPaciente(Paciente paciente) {
         listaAzul.adicionarGererico(paciente);
-        String novaSenha = "Azul" + (valor + 1);
+        String novaSenha = "Azul";
         paciente.setSenhaCor(novaSenha);
         valor++;
         return "{\"senha\":\""+paciente.getSenha()+"\"}";

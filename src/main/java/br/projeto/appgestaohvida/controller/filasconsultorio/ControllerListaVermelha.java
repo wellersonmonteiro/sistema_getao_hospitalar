@@ -25,7 +25,7 @@ public class ControllerListaVermelha {
 
     @PostMapping
     public String cadastrarNovoPaciente() {
-        String novaSenha = "Vermelha" + (valor + 1);
+        String novaSenha = "Vermelha";
         Paciente novoPaciente = new Paciente(novaSenha);
         listaVermelha.adicionar(String.valueOf(novoPaciente));
         valor++;
@@ -65,7 +65,7 @@ public class ControllerListaVermelha {
     }
     public String adicionarNovoPaciente(Paciente paciente) {
         listaVermelha.adicionarGererico(paciente);
-        String novaSenha = "Vermelha" + (valor + 1);
+        String novaSenha = "Vermelha";
         valor++;
         paciente.setSenhaCor(novaSenha);
         return "{\"senha\":\""+paciente.getSenha()+"\"}";

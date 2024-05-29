@@ -115,22 +115,25 @@
     </symbol>
     <symbol id="nurse" viewBox="0 0 512 512">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 128V70.2c0-13.3 8.3-25.3 20.8-30l96-36c7.2-2.7 15.2-2.7 22.5 0l96 36c12.5 4.7 20.8 16.6 20.8 30V128h-.3c.2 2.6 .3 5.3 .3 8v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V136c0-2.7 .1-5.4 .3-8H96zm48 48c0 44.2 35.8 80 80 80s80-35.8 80-80V160H144v16zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6zM208 48V64H192c-4.4 0-8 3.6-8 8V88c0 4.4 3.6 8 8 8h16v16c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V96h16c4.4 0 8-3.6 8-8V72c0-4.4-3.6-8-8-8H240V48c0-4.4-3.6-8-8-8H216c-4.4 0-8 3.6-8 8z"/></svg>    </symbol>
+    <symbol id="sala" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M228.3 469.1L47.6 300.4c-4.2-3.9-8.2-8.1-11.9-12.4h87c22.6 0 43-13.6 51.7-34.5l10.5-25.2 49.3 109.5c3.8 8.5 12.1 14 21.4 14.1s17.8-5 22-13.3L320 253.7l1.7 3.4c9.5 19 28.9 31 50.1 31H476.3c-3.7 4.3-7.7 8.5-11.9 12.4L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9s-20.2-3.9-27.7-10.9zM503.7 240h-132c-3 0-5.8-1.7-7.2-4.4l-23.2-46.3c-4.1-8.1-12.4-13.3-21.5-13.3s-17.4 5.1-21.5 13.3l-41.4 82.8L205.9 158.2c-3.9-8.7-12.7-14.3-22.2-14.1s-18.1 5.9-21.8 14.8l-31.8 76.3c-1.2 3-4.2 4.9-7.4 4.9H16c-2.6 0-5 .4-7.3 1.1C3 225.2 0 208.2 0 190.9v-5.8c0-69.9 50.5-129.5 119.4-141C165 36.5 211.4 51.4 244 84l12 12 12-12c32.6-32.6 79-47.5 124.6-39.9C461.5 55.6 512 115.2 512 185.1v5.8c0 16.9-2.8 33.5-8.3 49.1z"/></svg>
+    </symbol>
 </svg>
 
 
 <main class="container-fluid d-flex flex-nowrap" style="height: 100vh; overflow-y: auto;">
     <div class="row w-100 h-100">
         <div class="col-3 d-flex flex-column flex-shrink-0 p-3 bg-light overflow-auto">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-4 mt-md-4 me-md-auto link-dark text-decoration-none">
                 <img src="../assets/logotipo-clinica-vitallis.png" alt="Logo da Clínica Vitallis" width="25%" class="me-4">
                 <span class="fs-4">Clínica Vitallis</span>
             </a>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li class="nav-item">
                     <a href="../pages/painel-senhas-recepcao.html" class="nav-link link-dark">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        Painel de Senhas
+                        Painel de Senhas Recepção
                     </a>
                 </li>
 
@@ -143,7 +146,7 @@
                 <li>
                     <a href="../pages/sala-triagem-enfermaria.html" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#enfermaria"/></svg>
-                        Triagem Enfermaria
+                        Sala de Triagem Enfermaria
                     </a>
                 </li>
                 <li class="nav-item">
@@ -170,44 +173,49 @@
             </div>
         </div>
 
-
         <div class="col-9 d-flex flex-column justify-content-start p-4 overflow-auto">
             <div class="content">
-                <div class="row align-items-center">
-                    <div class="dropdown dropdown-top-right text-end">
-                        <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="../pages/tela-paciente.html" target="_blank">Tótem de Atendimento</a></li>
-                            <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
-                        </ul>
-                    </div>
+                <div class="container mt-2 mb-4 ">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 d-flex">
+                            <h1 class="display-4 fs-5">Seja bem-vindo(a) à Clínica Vitallis</h1>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
+                        </div>
 
-                    <div class="col-md-8 d-flex align-items-center ps-3">
-
-                        <h1 class="display-4 fs-5 mt-4">Seja bem-vindo(a) à Clínica Vitallis</h1>
-                    </div>
-
-                    <div class="col-md-4 text-end">
-
-                        <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
+                        <div class="col-md-3">
+                            <div class="dropdown dropdown-top-right text-end">
+                                <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="../pages/tela-paciente.html" target="_blank">Tótem de Atendimento</a></li>
+                                    <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="container">
                 <div class="tituloPrincipal border-bottom pb-3">
-                    <div class="pt-5">
-                        <h2 class="display-4 fs-3 fw-bolder pt-3">Sala de Espera | Triagem</h2>
+                    <div class="pt-5 d-flex align-items-center">
+                        <svg class="bi pe-none me-2" width="15" height="15">
+                            <use xlink:href="#sala"/>
+                        </svg>
+                        <h2 class="display-4 fs-3 fw-bolder mb-0 ps-3">Sala de Triagem | Enfermaria</h2>
                     </div>
+                </div>
+            </div>
 
 
-
-            <div class="row justify-content-center h-100 mt-5">
-
+            <div class="row justify-content-center mt-5">
                         <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #f25f5c;">
                                     Emergência
                                 </div>
                                 <div class="card-body bg-light-silver text-center">
@@ -215,10 +223,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Bloco 2 -->
                         <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-secondary fs-6" style="background: #ffe066;">
                                     Prioritário II
                                 </div>
                                 <div class="card-body bg-light-silver text-center">
@@ -226,10 +233,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Bloco 3 -->
                         <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #70c1b3;">
                                     Prioritário I
                                 </div>
                                 <div class="card-body bg-light-silver text-center">
@@ -237,10 +243,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Bloco 4 -->
                         <div class="col-lg-3 block">
-                            <div class="card text-center h-100">
-                                <div class="card-header bg-light text-dark fs-6">
+                            <div class="card text-center h-100 shadow-sm" style="border: #ffffff;">
+                                <div class="card-header text-light fs-6" style="background: #1982c4;">
                                     Geral
                                 </div>
                                 <div class="card-body bg-light-silver text-center">
@@ -248,10 +253,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Linha final com bloco ocupando 50% -->
+
                     <div class="row justify-content-center">
-                        <!-- Bloco 5 -->
                         <div class="col-lg-4 block mt-4">
                             <div class="card text-center h-100">
                                 <div class="card-header bg-light text-dark fs-6">
@@ -263,17 +266,30 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
             </div>
-
-            <div class="col-9 d-flex flex-column justify-content-start p-1">
-                <div class="pt-5">
+            <div class="col-12 d-flex flex-column justify-content-start p-1">
+                <div class="container">
+                    <div class="tituloPrincipal border-bottom pb-3">
+                        <div class="pt-3 d-flex align-items-center">
+                            <svg class="bi pe-none me-2" width="15" height="15">
+                                <use xlink:href="#sala"/>
+                            </svg>
+                            <h2 class="display-4 fs-3 fw-bolder mb-0 ps-3">Fila de Atendimento</h2>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="container text-center">
-                <table class="table table-striped" id="pacientesTable">
+                <div class="text-end pt-4 fw-light fs-5">
+                    <label class="" for="filtroAtendimento">Filtrar por Tipo de Atendimento:</label>
+                    <select id="filtroAtendimento">
+                        <option value="todos">Todos</option>
+                        <option value="Geral">Geral</option>
+                        <option value="Emergência">Emergência</option>
+                        <option value="Prioritário I">Prioritário I</option>
+                        <option value="Prioritário II">Prioritário II</option>
+                    </select>
+                </div>
+            <div class="container text-center pt-3">
+                <table class="table" id="pacientesTable">
                     <thead>
                     <tr>
                         <th>Número na Fila</th>
@@ -289,7 +305,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 </main>
 
 

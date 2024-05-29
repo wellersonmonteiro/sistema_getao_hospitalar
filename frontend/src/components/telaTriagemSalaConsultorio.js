@@ -75,26 +75,25 @@ async function atualizarContagemPacientes() {
         }
 
         const dados = await response.json();
+        console.log('JSON recebido:', JSON.stringify(dados, null, 2));
 
-        // Inicializa contadores para cada categoria de atendimento
         let emergenciaCount = 0;
         let prioritarioICount = 0;
         let prioritarioIICount = 0;
         let geralCount = 0;
 
-        // Conta o número de pacientes em cada categoria de atendimento
         dados.forEach(item => {
-            switch (item["Tipo de atendimento"]) {
-                case "Emergência":
+            switch (item["senhaCor"]) {
+                case "Vermelha":
                     emergenciaCount++;
                     break;
-                case "Prioritário I":
+                case "Amarela":
                     prioritarioICount++;
                     break;
-                case "Prioritário II":
+                case "Verde":
                     prioritarioIICount++;
                     break;
-                case "Geral":
+                case "Azul":
                     geralCount++;
                     break;
                 default:
@@ -102,13 +101,11 @@ async function atualizarContagemPacientes() {
             }
         });
 
-        // Atualiza os elementos HTML com os contadores
-        document.getElementById('emergencia').textContent = emergenciaCount.toString();
-        document.getElementById('prioritarioI').textContent = prioritarioICount.toString();
-        document.getElementById('prioritarioII').textContent = prioritarioIICount.toString();
-        document.getElementById('geral').textContent = geralCount.toString();
+        document.getElementById('vermelha').textContent = emergenciaCount.toString();
+        document.getElementById('amarela').textContent = prioritarioICount.toString();
+        document.getElementById('verde').textContent = prioritarioIICount.toString();
+        document.getElementById('azul').textContent = geralCount.toString();
 
-        // Calcula e exibe o total de pacientes
         const totalPacientes = emergenciaCount + prioritarioICount + prioritarioIICount + geralCount;
         document.getElementById('total').textContent = totalPacientes.toString();
 
@@ -117,6 +114,7 @@ async function atualizarContagemPacientes() {
     }
 }
 window.addEventListener('load', atualizarContagemPacientes);
+
 
 async function solicitarDados() {
     try {
@@ -140,3 +138,24 @@ async function solicitarDados() {
 
 // Adicionar evento de clique ao botão
 document.getElementById('btnSolicitarDados').addEventListener('click', solicitarDados);
+
+
+document.getElementById('filtroAtendimento').addEventListener('change', function() {
+    var filtro = this.value;
+    var tabela = document.getElementById('pacientesTable');
+    var linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    for (var i = 0; i < linhas.length; i++) {
+        var celulaTipoAtendimento = linhas[i].getElementsByTagName('td')[4];
+        if (celulaTipoAtendimento) {
+            var tipoAtendimento = celulaTipoAtendimento.textContent || celulaTipoAtendimento.innerText;
+            if (filtro === 'todos' || tipoAtendimento === filtro) {
+                linhas[i].style.display = '';
+            } else {
+                linhas[i].style.display = 'none';
+            }
+        }
+    }
+});
+
+

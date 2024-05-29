@@ -171,4 +171,53 @@ async function mostrarTipoAtendimentoPrimeiroElemento() {
     }
 }
 mostrarTipoAtendimentoPrimeiroElemento();
+document.addEventListener('DOMContentLoaded', function() {
+    const pacientes = [];
 
+    const tbody = document.querySelector('#pacientesTable tbody');
+    const filtroAtendimento = document.querySelector('#filtroAtendimento');
+
+    function preencherTabela(pacientes) {
+        tbody.innerHTML = ''; // Limpa o conteúdo anterior
+        pacientes.forEach(paciente => {
+            const row = document.createElement('tr');
+
+            const numeroCell = document.createElement('td');
+            numeroCell.textContent = paciente.numero;
+            row.appendChild(numeroCell);
+
+            const horarioCell = document.createElement('td');
+            horarioCell.textContent = paciente.horario;
+            row.appendChild(horarioCell);
+
+            const senhaCell = document.createElement('td');
+            senhaCell.textContent = paciente.senha;
+            row.appendChild(senhaCell);
+
+            const tipoCell = document.createElement('td');
+            tipoCell.textContent = paciente["Tipo de atendimento"];
+            row.appendChild(tipoCell);
+
+            tbody.appendChild(row);
+        });
+    }
+
+    function filtrarTabela() {
+        const filtro = filtroAtendimento.value;
+        const rows = tbody.getElementsByTagName('tr');
+
+        for (let row of rows) {
+            const tipoAtendimento = row.cells[3].textContent; // Seleciona o conteúdo da célula da coluna "Tipo de Atendimento"
+            if (filtro === 'todos' || tipoAtendimento === filtro) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+
+    filtroAtendimento.addEventListener('change', filtrarTabela);
+
+    // Preenche a tabela inicialmente com todos os pacientes
+    preencherTabela(pacientes);
+});

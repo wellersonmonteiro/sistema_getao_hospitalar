@@ -112,26 +112,27 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM412.6 181.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5z"/></svg>
     </symbol>
-
+    <symbol id="ficha" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48V256H144c8.8 0 16 7.2 16 16s-7.2 16-16 16H0v64H144c8.8 0 16 7.2 16 16s-7.2 16-16 16H0v80c0 26.5 21.5 48 48 48H265.9c-6.3-10.2-9.9-22.2-9.9-35.1c0-46.9 25.8-87.8 64-109.2V271.8 48c0-26.5-21.5-48-48-48H48zM152 64h16c8.8 0 16 7.2 16 16v24h24c8.8 0 16 7.2 16 16v16c0 8.8-7.2 16-16 16H184v24c0 8.8-7.2 16-16 16H152c-8.8 0-16-7.2-16-16V152H112c-8.8 0-16-7.2-16-16V120c0-8.8 7.2-16 16-16h24V80c0-8.8 7.2-16 16-16zM512 272a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM288 477.1c0 19.3 15.6 34.9 34.9 34.9H541.1c19.3 0 34.9-15.6 34.9-34.9c0-51.4-41.7-93.1-93.1-93.1H381.1c-51.4 0-93.1 41.7-93.1 93.1z"/></svg></symbol>
 </svg>
 
 <main class="container-fluid d-flex flex-nowrap" style="height: 100vh; overflow-y: auto;">
     <div class="row w-100 h-100">
         <div class="col-3 d-flex flex-column flex-shrink-0 p-3 bg-light overflow-auto">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-4 mt-md-4 me-md-auto link-dark text-decoration-none">
                 <img src="../assets/logotipo-clinica-vitallis.png" alt="Logo da Clínica Vitallis" width="25%" class="me-4">
                 <span class="fs-4">Clínica Vitallis</span>
             </a>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li class="nav-item">
                     <a href="../pages/painel-senhas-triagem.html" class="nav-link link-dark">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        Painel de Senhas
+                        Painel de Senhas Enfermaria
                     </a>
                 </li>
                 <li>
-                    <a href="../pages/ficha-atendimento.html" class="nav-link active" aria-current="page">
+                    <a href="../pages/ficha-atendimento-triagem.html" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#edicao"/></svg>
                         Ficha de Triagem
                     </a>
@@ -139,7 +140,7 @@
                 <li>
                     <a href="../pages/sala-triagem-consultorio.html" class="nav-link link-dark">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#enfermaria"/></svg>
-                        Consultório Médico
+                        Sala Consultório Médico
                     </a>
                 </li>
              </ul>
@@ -160,35 +161,57 @@
         </div>
 
         <div class="col-9 d-flex flex-column justify-content-start p-4 overflow-auto">
+
             <div class="content">
-                <div class="row align-items-center">
-                    <div class="col-md-8 d-flex align-items-center ps-3">
-                        <h1 class="display-4 fs-5 mt-4">Seja bem-vindo(a) à Clínica Vitallis</h1>
-                    </div>
-                    <div class="col-md-4 text-end">
-                        <p id="horarioAtual" class="fw-regular mb-0 pe-3 fs-5"></p>
+                <div class="container mt-2 mb-4 ">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 d-flex">
+                            <h1 class="display-4 fs-5">Seja bem-vindo(a) à Clínica Vitallis</h1>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="dropdown dropdown-top-right text-end">
+                                <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="../pages/tela-paciente.html" target="_blank">Tótem de Atendimento</a></li>
+                                    <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="container">
                 <div class="tituloPrincipal border-bottom pb-3">
-                    <div class="pt-5">
-                        <h2 class="display-4 fs-3 fw-bolder pt-3">Ficha de Atendimento | Enfermaria</h2>
+                    <div class="pt-5 d-flex align-items-center">
+                        <svg class="bi pe-none me-2" width="15" height="15">
+                            <use xlink:href="#ficha"/>
+                        </svg>
+                        <h2 class="display-4 fs-3 fw-bolder mb-0 ps-3">Ficha de Atendimento | Enfermaria</h2>
                     </div>
                 </div>
             </div>
 
 
-            <div class="bg-light ps-4 pe-4 rounded-3 mt-4 h-100">
+            <div class="bg-primary ps-4 pe-4 rounded-3 mt-4 h-100 text-uppercase fw-light shadow-sm">
                 <form id="pacienteForm">
                     <div class="row mb-3 mt-4 offset">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                <label for="nomeCompleto" class="form-label text-light">Nome Completo</label>
                                 <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" readonly>
                             </div>
                         </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="senha" class="form-label">Senha de Atendimento</label>
+                                    <label for="senha" class="form-label text-light">Senha de Atendimento</label>
                                     <input type="text" class="form-control" id="senha" name="senha" readonly>
                                 </div>
                             </div>
@@ -197,7 +220,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="nivelDor" class="form-label">Nível de Dor</label>
+                                <label for="nivelDor" class="form-label text-light">Nível de Dor</label>
                                 <select class="form-select" id="nivelDor" name="nivelDor">
                                     <option value="" disabled selected>Selecione o nível da dor</option>
                                     <option value="DorModerada">Dor Moderada</option>
@@ -208,7 +231,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="temperatura" class="form-label">Temperatura</label>
+                                <label for="temperatura" class="form-label text-light">Temperatura</label>
                                 <select class="form-select" id="temperatura" name="temperatura">
                                     <option value="" disabled selected>Selecione a temperatura</option>
                                     <option value="TemperaturaAlta">Temperatura Acima de 39</option>
@@ -219,7 +242,7 @@
                         </div>
                     </div>
 
-                    <p class="mb-2">Condições Gerais do Paciente</p>
+                    <p class="mb-2 text-light">Condições Gerais do Paciente</p>
                     <div class="border p-3 mb-3 rounded" style="background-color: #ffffff;">
                         <div class="row mb-3 mt-3">
                             <div class="col-md-4">
@@ -228,7 +251,7 @@
                             </div>
                             <div class="col-md-4">
                                 <input type="checkbox" class="form-check-input" id="choqueCheckbox" name="choque">
-                                <label for="choqueCheckbox" class="form-label">Choque</label>
+                                <label for="choqueCheckbox" class="form-label ">Choque</label>
                             </div>
                             <div class="col-md-4">
                                 <input type="checkbox" class="form-check-input" id="convulsaoCheckbox" name="emConvulsao">
@@ -264,7 +287,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="sinaisHemorragia" class="form-label">Sinais de Hemorragia</label>
+                                <label for="sinaisHemorragia" class="form-label text-light">Sinais de Hemorragia</label>
                                 <select class="form-select" id="sinaisHemorragia" name="sinaisHemorragia">
                                     <option value="" disabled selected>Selecione uma opção</option>
                                     <option value="SemHemorragia">Sem Hemorragia</option>
@@ -274,7 +297,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                                <label for="idosoOuGravida" class="form-label">Idoso/Grávida Sintomático</label>
+                                <label for="idosoOuGravida" class="form-label text-light">Idoso/Grávida Sintomático</label>
                                 <select class="form-select" id="idosoOuGravida" name="idosoOuGravidaSintomatico">
                                     <option value="" disabled selected>Selecione uma opção</option>
                                     <option value="Sim">Sim</option>
@@ -283,9 +306,9 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row mb-4 mt-4">
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-dark w-25" id="salvarBtn">Salvar</button>
+                            <button type="submit" class="btn btn-light w-25" id="salvarBtn">Salvar</button>
                     </div>
                     </div>
                 </form>

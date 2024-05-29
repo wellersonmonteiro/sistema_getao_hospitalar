@@ -13,9 +13,10 @@ function atualizarHorario() {
 
     elementoHorario.textContent = horarioFormatado;
 }
+
 setInterval(atualizarHorario, 1000);
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const senha = localStorage.getItem('senha');
 
     if (senha !== null) {
@@ -97,7 +98,59 @@ async function ativarMain() {
     }
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault();
     enviarDadosPaciente();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function(event) {
+            var value = event.target.value.replace(/\D/g, '');
+            if (value.length > 3) {
+                value = value.substring(0, 3) + '.' + value.substring(3);
+            }
+            if (value.length > 7) {
+                value = value.substring(0, 7) + '.' + value.substring(7);
+            }
+            if (value.length > 11) {
+                value = value.substring(0, 11) + '-' + value.substring(11);
+            }
+            if (value.length > 14) {
+                value = value.substring(0, 14); // Limita o comprimento máximo do CPF
+            }
+            event.target.value = value;
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var dataNascimentoInput = document.getElementById('dataNascimento');
+    if (dataNascimentoInput) {
+        dataNascimentoInput.addEventListener('input', function(event) {
+            var value = event.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2);
+            }
+            if (value.length > 5) {
+                value = value.substring(0, 5) + '/' + value.substring(5);
+            }
+            if (value.length > 10) {
+                value = value.substring(0, 10); // Limita o comprimento máximo da data de nascimento
+            }
+            event.target.value = value;
+        });
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+        Inputmask({
+            mask: ["(99) 99999-9999", "(99) 9999-9999"],
+            keepStatic: true
+        }).mask(telefoneInput);
+    }
 });

@@ -22,55 +22,53 @@
             <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
         </ul>
     </div>
-    <div class="d-flex flex-column justify-content-start p-4">
+    <div class="col-12 d-flex flex-column justify-content-start p-4 overflow-auto">
         <div class="content">
-            <div class="row align-items-center">
-                  <div class="col-md-8 d-flex align-items-center ps-5">
-                    <img src="../assets/logotipo-clinica-vitallis.png" alt="Logotipo Clinica Médica" class="me-3" style="width: 80px;">
-                    <h1 class="display-4 fs-5 mb-0">Seja bem-vindo(a) à Clínica Vitallis</h1>
-                </div>
-                <div class="col-md-4 text-end">
-                    <p id="horarioAtual" class="fw-lighter mb-0 pe-5 fs-3"></p>
+            <div class="container mt-2 mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <img src="../assets/logotipo-clinica-vitallis.png" alt="Logo" class="me-4" style="height: 60px;">
+                        <h1 class="display-4 fs-5">Seja bem-vindo(a) à Clínica Vitallis</h1>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <p id="horarioAtual" class="fw-light mb-0 pe-3 fs-5"></p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="dropdown dropdown-top-right text-end">
+                            <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="../pages/painel-senhas-recepcao.html" target="_blank">Tótem de Atendimento</a></li>
+                                <li><a class="dropdown-item" href="../pages/informacoes-projeto.html" target="_blank">Documentação</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-            <div class="pt-5">
-                <h2 class="display-4 fs-4 ps-5 pt-3 text-uppercase fw-bold">Selecione o Tipo de Atendimento:</h2>
+        <div class="container">
+            <div class="tituloPrincipal pb-3">
+                <div class="pt-4 d-flex align-items-center">
+                    <svg class="bi pe-none me-2" width="15" height="15">
+                        <use xlink:href="#medico"/>
+                    </svg>
+                    <h2 class="display-4 fs-4 fw-bolder">SELECIONE O TIPO DE ATENDIMENTO</h2>
+                </div>
             </div>
-        </div>
-    </div>
 
     <div class="container mt-2">
+
         <div class="row">
-            <!-- Card Emergência -->
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Emergência</h5>
-                        <p class="card-text">A</p>
+                        <p class="card-text">Pacientes em Emergência máxima</p>
                         <a href="#" id="botaoSolicitarSenhaA" class="btn btn-danger">Solicitar Senha</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Geral -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Geral</h5>
-                        <p class="card-text">B</p>
-                        <a href="#" id="botaoSolicitarSenhaB" class="btn btn-success">Solicitar Senha</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Prioritário</h5>
-                        <p class="card-text">Prioritário para pessoas com idade superior a 60 anos e/ou  deficentes.</p>
-                        <a href="#" id="botaoSolicitarSenhaP" class="btn btn-warning">Solicitar Senha</a>
                     </div>
                 </div>
             </div>
@@ -79,14 +77,36 @@
                     <div class="card-body">
                         <h5 class="card-title">Prioritário II</h5>
                         <p class="card-text">Pessoa com idade acima de 80 anos, mulheres grávidas e/ou crianças</p>
-                        <a href="#" id="botaoSolicitarSenhaPP" class="btn btn-dark">Solicitar Senha</a>
+                        <a href="#" id="botaoSolicitarSenhaPP" class="btn btn-warning text-light">Solicitar Senha</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Prioritário I</h5>
+                        <p class="card-text">Prioritário para pacientes com idade superior a 60 anos e/ou  deficentes.</p>
+                        <a href="#" id="botaoSolicitarSenhaP" class="btn text-light" style="background: #70c1b3;">Solicitar Senha</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Geral</h5>
+                        <p class="card-text">Pacientes Gerais sem prioridade de atendimento</p>
+                        <a href="#" id="botaoSolicitarSenhaB" class="btn text-light" style="background: #1982c4;">Solicitar Senha</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-3">
+    <div class="container mb-2">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card text-center">
@@ -100,8 +120,6 @@
             </div>
         </div>
     </div>
-
-
 </main>
 
 

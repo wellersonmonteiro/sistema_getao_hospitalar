@@ -1,15 +1,9 @@
 body {
   min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
 }
 
 main {
   height: 100vh;
-  height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
@@ -59,8 +53,18 @@ main {
 }
 
 .nav-link.active {
-  background-color: rgba(0, 0, 0, .75) !important;
+  background-color: #06303F !important;
   color: #d2f4ea;
+}
+
+.nav-link:hover {
+  background-color: rgba(6, 48, 63, 0.69) !important;
+  color: #f2f2f2 !important;
+}
+
+.nav-link-hover:hover {
+  background-color: rgba(221, 221, 221, 0) !important;
+
 }
 
 .dropdown-top-right {
@@ -69,8 +73,63 @@ main {
   right: 10px;
 }
 .btn svg {
-  width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
-  height: 24px; /* Ajuste o tamanho do ícone conforme necessário */
-  vertical-align: middle; /* Alinha verticalmente o ícone ao centro */
-  fill: black; /* Define a cor do ícone para branco */
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  fill: #06303F;
+}
+
+.bg-primary {
+  background-color: #06303F !important;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px; /* Adiciona bordas arredondadas à tabela */
+  overflow: hidden; /* Garante que o arredondamento seja aplicado corretamente */
+
+}
+.table thead th {
+  background-color: #06303F; /* Cor específica para o cabeçalho */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.table tbody td {
+  padding: 8px;
+  text-align: center;
+}
+.table tbody tr:nth-child(even) {
+  background-color: rgba(6, 48, 63, 0.14);
+}
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* Cor para as linhas ímpares */
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item:hover {
+  background-color: #048EA6 !important;
+  color: #f2f2f2 !important;
+}
+
+#filtroAtendimento {
+  margin: 10px;
+  font-size: 17px;
+  text-align: left;
+  font-weight: lighter;
+  padding: 2px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra com deslocamento horizontal de 0, deslocamento vertical de 0, desfoque de 10px e cor preta com 10% de opacidade */
+}
+
+
+bg.emergencia {
+  background-color: #048EA6 !important;
+
 }

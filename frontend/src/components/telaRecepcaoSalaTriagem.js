@@ -112,3 +112,22 @@ async function atualizarContagemPacientes() {
     }
 }
 window.addEventListener('load', atualizarContagemPacientes);
+
+
+document.getElementById('filtroAtendimento').addEventListener('change', function() {
+    var filtro = this.value;
+    var tabela = document.getElementById('pacientesTable');
+    var linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    for (var i = 0; i < linhas.length; i++) {
+        var celulaTipoAtendimento = linhas[i].getElementsByTagName('td')[4];
+        if (celulaTipoAtendimento) {
+            var tipoAtendimento = celulaTipoAtendimento.textContent || celulaTipoAtendimento.innerText;
+            if (filtro === 'todos' || tipoAtendimento === filtro) {
+                linhas[i].style.display = '';
+            } else {
+                linhas[i].style.display = 'none';
+            }
+        }
+    }
+});
