@@ -42,15 +42,17 @@ public class SecurityFilter extends OncePerRequestFilter {
     }
 
 
+
     public String extraiTokenHeader(HttpServletRequest request){
         var authHeader = request.getHeader("Authorization");
         if (authHeader == null) {
             return null;
         }
-        if(!authHeader.split(" ")[0].equals("Bearer")){
+        var parts = authHeader.split(" ");
+        if(parts.length < 2 || !parts[0].equals("Bearer")){
             return null;
         }
-        return authHeader.split("")[1];
+        return parts[1];
     }
 }
 

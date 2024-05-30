@@ -1,5 +1,6 @@
 package br.projeto.appgestaohvida.seguranca.config;
 
+import br.projeto.appgestaohvida.seguranca.enums.RoleEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,12 +26,11 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authoriza -> authoriza
-                        .requestMatchers(HttpMethod.GET, "/usuarios/admin").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/usuarios/user").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/usuarios/admin").hasAuthority(RoleEnum.ADMIN.toString())
+                        .requestMatchers(HttpMethod.GET, "/usuarios/user").hasAuthority(RoleEnum.USER.toString())
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/refresh-token").permitAll()
@@ -39,7 +39,6 @@ public class SecurityConfiguration {
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
