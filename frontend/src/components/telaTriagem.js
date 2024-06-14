@@ -64,6 +64,7 @@ async function exibirConjuntoDeListas() {
 window.addEventListener("load", exibirConjuntoDeListas);
 
 
+
 async function exibirPrimeiraSenha() {
     try {
         const conjuntoDeListas = await buscarConjuntoDeListas();
@@ -197,3 +198,18 @@ function selecionarSenha() {
     window.location.href = '../pages/ficha-atendimento-triagem.html';
 }
 
+
+document.getElementById('filtroAtendimento').addEventListener('change', function() {
+    var filtro = this.value;
+    var tabela = document.getElementById('pacientesTable').getElementsByTagName('tbody')[0];
+    var linhas = tabela.getElementsByTagName('tr');
+
+    for (var i = 0; i < linhas.length; i++) {
+        var tipoAtendimento = linhas[i].getElementsByTagName('td')[4].innerText;
+        if (filtro === 'todos' || tipoAtendimento === filtro) {
+            linhas[i].style.display = '';
+        } else {
+            linhas[i].style.display = 'none';
+        }
+    }
+});
